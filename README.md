@@ -1,9 +1,23 @@
 # Scylla Project
 
+## Libraries
+- Support libraries
+- Design and CardView (optional)
+- [RxJava2](https://github.com/ReactiveX/RxJava) and [RxAndroid2](https://github.com/ReactiveX/RxAndroid) 
+- [Retrofit 2](http://square.github.io/retrofit/)
+- [Dagger 2](http://google.github.io/dagger/)
+- [Butterknife](https://github.com/JakeWharton/butterknife)
+- [Timber](https://github.com/JakeWharton/timber)
+- [Picasso](https://github.com/square/picasso) (optional)
+- [Glide](https://github.com/bumptech/glide) (optional)
+- [Stetho](https://github.com/facebook/stetho)
+- [LeakCanary](https://github.com/square/leakcanary)
+
 ## Android Studio setup and plugins
 
-* Code analysis - [[CheckStyle](https://docs.gradle.org/3.3/userguide/checkstyle_plugin.html), [Findbug](https://docs.gradle.org/3.3/userguide/findbugs_plugin.html), [PMD](https://docs.gradle.org/3.3/userguide/pmd_plugin.html)] using QAPlug or Gradle Plugins 
+* Code analysis - [[CheckStyle](https://docs.gradle.org/3.3/userguide/checkstyle_plugin.html), [Findbug](https://docs.gradle.org/3.3/userguide/findbugs_plugin.html), [PMD](https://docs.gradle.org/3.3/userguide/pmd_plugin.html)] using Gradle Plugins and [QAPlug](https://qaplug.com/download/) as GUI
 * CheckStyle configs [[Square](https://github.com/square/android-times-square/blob/master/checkstyle.xml), [Google](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml), [Ribot](https://github.com/ribot/android-boilerplate/blob/master/config/quality/checkstyle/checkstyle-config.xml)]
+* 
 
 ## Coding colour and styles
 
