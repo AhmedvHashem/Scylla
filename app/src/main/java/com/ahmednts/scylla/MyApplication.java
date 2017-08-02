@@ -3,6 +3,7 @@ package com.ahmednts.scylla;
 import android.app.Application;
 import android.os.StrictMode;
 import com.squareup.leakcanary.LeakCanary;
+import timber.log.Timber;
 
 /**
  * Created by AhmedNTS on 7/29/2017.
@@ -28,6 +29,10 @@ public class MyApplication
     LeakCanary.install(this);
 
     instance = this;
+
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree());
+    }
 
     setStrictMode();
   }
