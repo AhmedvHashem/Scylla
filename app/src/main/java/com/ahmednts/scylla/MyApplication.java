@@ -8,7 +8,8 @@ import com.squareup.leakcanary.LeakCanary;
  * Created by AhmedNTS on 7/29/2017.
  */
 
-public class MyApplication extends Application {
+public class MyApplication
+    extends Application {
 
   private static MyApplication instance;
 
@@ -31,7 +32,7 @@ public class MyApplication extends Application {
     setStrictMode();
   }
 
-  void setStrictMode() {
+  private void setStrictMode() {
     if (BuildConfig.DEBUG) {
       StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads()
           .detectDiskWrites()
@@ -44,6 +45,5 @@ public class MyApplication extends Application {
           .penaltyDeath()
           .build());
     }
-    super.onCreate();
   }
 }
