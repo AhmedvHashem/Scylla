@@ -23,3 +23,15 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Proguard rules that are applied to your test apk/code.
+-ignorewarnings
+
+-keep class android.support.v4.widget.DrawerLayout { *; }
+
+-dontwarn org.junit.**
+
+# Parceler library
+#-keep interface org.parceler.Parcel
+#-keep @org.parceler.Parcel class * { *; }
+#-keep class **$$Parcelable { *; }
