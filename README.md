@@ -26,7 +26,7 @@ To run **unit** tests on your machine:
 
 The following code analysis tools are set up on this project:
 
-* [PMD](https://pmd.github.io/): It finds common programming flaws like unused variables, empty catch blocks, unnecessary object creation, and so forth. See [this project's PMD ruleset](config/quality/pmd/pmd-ruleset.xml).
+* [PMD](https://pmd.github.io/): It finds common programming flaws like unused variables, empty catch blocks, unnecessary object creation, and so forth. See [this project's PMD ruleset](config/pmd/pmd-ruleset.xml).
 
 ``` 
 ./gradlew pmd
@@ -38,7 +38,7 @@ The following code analysis tools are set up on this project:
 ./gradlew findbugs
 ```
 
-* [Checkstyle](http://checkstyle.sourceforge.net/): It ensures that the code style follows [our Android code guidelines](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md#2-code-guidelines). See our [checkstyle config file](config/quality/checkstyle/checkstyle-config.xml).
+* [Checkstyle](http://checkstyle.sourceforge.net/): See our [checkstyle config file](config/checkstyle/square_checks.xml).
 
 ```
 ./gradlew checkstyle
