@@ -7,7 +7,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "25.0.3"
+  buildToolsVersion '26.0.2'
   defaultConfig {
     applicationId "com.ahmednts.scylla"
     minSdkVersion 17
@@ -79,8 +79,8 @@ dependencies {
   //annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 
   //UI
-  compile 'com.jakewharton:butterknife:8.6.0'
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+  compile 'com.jakewharton:butterknife:8.8.1'
+  annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
   //Utils
   compile 'com.jakewharton.timber:timber:4.5.1'

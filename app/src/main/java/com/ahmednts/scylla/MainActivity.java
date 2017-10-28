@@ -12,6 +12,6 @@ public class MainActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    Timber.wtf("WRF");
+    Timber.wtf("WTF");
   }
 }

@@ -26,6 +26,7 @@ public class MyApplication
       // You should not init your app in this process.
       return;
     }
+
     LeakCanary.install(this);
 
     instance = this;
