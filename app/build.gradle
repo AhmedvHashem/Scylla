@@ -16,9 +16,9 @@ repositories {
 
 apply from: '../config/quality.gradle'
 
-def keystorePropertiesFile = rootProject.file("private/keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def releasePropertiesFile = rootProject.file("private/release.properties")
+def releaseProperties = new Properties()
+releaseProperties.load(new FileInputStream(releasePropertiesFile))
 
 android {
   compileSdkVersion 25
@@ -40,9 +40,9 @@ android {
     }
     releaseConfig {
       storeFile rootProject.file("private/release.keystore")
-      storePassword keystoreProperties['storePassword']
-      keyAlias keystoreProperties['keyAlias']
-      keyPassword keystoreProperties['keyPassword']
+      storePassword releaseProperties['storePassword']
+      keyAlias releaseProperties['keyAlias']
+      keyPassword releaseProperties['keyPassword']
     }
   }
 
