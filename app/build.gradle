@@ -1,17 +1,17 @@
 buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
+  repositories {
+    maven { url 'https://maven.fabric.io/public' }
+  }
 
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
+  dependencies {
+    classpath 'io.fabric.tools:gradle:1.+'
+  }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+  maven { url 'https://maven.fabric.io/public' }
 }
 
 apply from: '../config/quality.gradle'
@@ -51,6 +51,9 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
+      debuggable true
+      applicationIdSuffix '.debug'
+
       signingConfig signingConfigs.debugConfig
     }
     release {
@@ -61,11 +64,20 @@ android {
     }
   }
 
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
   lintOptions {
     // Don't abort if Lint finds an error, otherwise the Jenkins build
     // will be marked as failed, and Jenkins won't analyse the Lint output
     abortOnError false
     warning 'InvalidPackage'
+  }
+
+  packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor' // butterknife
   }
 }
 
@@ -106,12 +118,12 @@ dependencies {
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
   testCompile 'junit:junit:4.12'
-    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-        transitive = true;
-    }
+  compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+    transitive = true;
+  }
 }
 
 // Log out test results to console
-tasks.matching {it instanceof Test}.all {
+tasks.matching { it instanceof Test }.all {
   testLogging.events = ["failed", "passed", "skipped"]
 }
