@@ -40,7 +40,7 @@ captures/
 .externalNativeBuild
 
 # Private
-# keystore.properties
+# release.properties
 # release.keystore
 
 # Fabric
