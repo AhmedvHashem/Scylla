@@ -98,24 +98,23 @@ dependencies {
   compile 'com.google.code.gson:gson:2.8.1'
   compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
-  compile 'com.facebook.stetho:stetho:1.5.0'
-  compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-
-  //compile 'com.squareup.picasso:picasso:2.5.2'
-  //compile 'com.github.bumptech.glide:glide:4.0.0'
-  //annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+  //  compile 'com.github.bumptech.glide:glide:4.0.0'
+  //  annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 
   //UI
   compile 'com.jakewharton:butterknife:8.8.1'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
   //Utils
-  compile 'com.jakewharton.timber:timber:4.5.1'
-  //compile 'org.parceler:parceler-api:1.1.9'
-  //annotationProcessor 'org.parceler:parceler:1.1.9'
-  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+  implementation 'com.jakewharton.timber:timber:4.5.1'
+  //  compile 'com.facebook.stetho:stetho:1.5.0'
+  //  compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+  //  compile 'org.parceler:parceler-api:1.1.9'
+  //  annotationProcessor 'org.parceler:parceler:1.1.9'
+  //  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+  //  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+  //  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
   testCompile 'junit:junit:4.12'
   compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
@@ -123,7 +122,7 @@ dependencies {
   }
 }
 
-// Log out test results to console
+// Logger out test results to console
 tasks.matching { it instanceof Test }.all {
   testLogging.events = ["failed", "passed", "skipped"]
 }

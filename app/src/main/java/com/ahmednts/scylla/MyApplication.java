@@ -3,7 +3,6 @@ package com.ahmednts.scylla;
 import android.app.Application;
 import android.os.StrictMode;
 import com.crashlytics.android.Crashlytics;
-import com.squareup.leakcanary.LeakCanary;
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
@@ -14,10 +13,10 @@ import timber.log.Timber;
 public class MyApplication
     extends Application {
 
-  private static MyApplication instance;
+  private static MyApplication INSTANCE;
 
   public static MyApplication getInstance() {
-    return instance;
+    return INSTANCE;
   }
 
   @Override
@@ -25,15 +24,15 @@ public class MyApplication
     super.onCreate();
     Fabric.with(this, new Crashlytics());
 
-    instance = this;
+    INSTANCE = this;
 
-    if (LeakCanary.isInAnalyzerProcess(this)) {
-      // This process is dedicated to LeakCanary for heap analysis.
-      // You should not init your app in this process.
-      return;
-    }
-
-    LeakCanary.install(this);
+    //if (LeakCanary.isInAnalyzerProcess(this)) {
+    //  // This process is dedicated to LeakCanary for heap analysis.
+    //  // You should not init your app in this process.
+    //  return;
+    //}
+    //
+    //LeakCanary.install(this);
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
