@@ -52,3 +52,7 @@
 }
 # Ignore annotation used for build tooling.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+## Crashlytics
+-keep class com.crashlytics.** { *; }
+-dontwarn com.crashlytics.**
