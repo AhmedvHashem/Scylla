@@ -19,12 +19,15 @@ public class MyApplication
     return INSTANCE;
   }
 
+  public MyApplication() {
+    super();
+    INSTANCE = this;
+  }
+
   @Override
   public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
-
-    INSTANCE = this;
 
     //if (LeakCanary.isInAnalyzerProcess(this)) {
     //  // This process is dedicated to LeakCanary for heap analysis.
