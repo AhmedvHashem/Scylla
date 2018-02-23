@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ahmednts.scylla">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
       android:name=".MyApplication"
@@ -15,7 +15,7 @@
 
     <meta-data
         android:name="io.fabric.ApiKey"
-        android:value="1bf9f48f478149359ed4f007d6ff8757cc7e9c4f" />
+        android:value="1bf9f48f478149359ed4f007d6ff8757cc7e9c4f"/>
 
     <activity android:name="com.ahmednts.scylla.MainActivity">
       <intent-filter>
@@ -25,6 +25,6 @@
       </intent-filter>
     </activity>
 
-    </application>
+  </application>
 
 </manifest>

@@ -17,12 +17,10 @@ public abstract class Utils {
     try {
       PackageManager pm = MyApplication.getInstance().getPackageManager();
       PackageInfo pi = pm.getPackageInfo(MyApplication.getInstance().getPackageName(), 0);
-      return pi == null
-             ? "Logger"
-             : pi.applicationInfo.loadLabel(pm).toString();
+      return pi == null ? "Logger" : pi.applicationInfo.loadLabel(pm).toString();
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
-      return null;
+      return "Logger";
     }
   }
 }
