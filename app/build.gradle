@@ -72,9 +72,9 @@ repositories {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
-  //  implementation "com.android.support:design:${rootProject.ext.supportLibraryVersion}"
-  //  implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibraryVersion}"
+  implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibrary}"
+  //  implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
+  //  implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibrary}"
   implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
   //RxJava & RxAndroid
@@ -82,33 +82,30 @@ dependencies {
   implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
 
   //Networking
-  implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-  implementation 'com.google.code.gson:gson:2.8.2'
-  implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+  implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit}"
+  implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit}"
+  implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit}"
+  implementation "com.google.code.gson:gson:2.8.2"
 
-  //  implementation 'com.github.bumptech.glide:glide:4.0.0'
-  //  annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+//  implementation "com.github.bumptech.glide:glide:${rootProject.ext.glide}"
+//  annotationProcessor "com.github.bumptech.glide:compiler${rootProject.ext.glide}"
 
   //UI
-  implementation 'com.jakewharton:butterknife:8.8.1'
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+  implementation "com.jakewharton:butterknife:${rootProject.ext.butterknife}"
+  annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterknife}"
 
   //Utils
   implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
   implementation 'com.jakewharton.timber:timber:4.5.1'
-  //  implementation 'com.facebook.stetho:stetho:1.5.0'
-  //  implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-  //  implementation 'org.parceler:parceler-api:1.1.9'
-  //  annotationProcessor 'org.parceler:parceler:1.1.9'
-  //  debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-  //  releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-  //  testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+  //  implementation "com.facebook.stetho:stetho:${rootProject.ext.stetho}"
+  //  implementation "com.facebook.stetho:stetho-okhttp3:${rootProject.ext.stetho}"
+  //  implementation "org.parceler:parceler-api:${rootProject.ext.parceler}"
+  //  annotationProcessor "org.parceler:parceler:${rootProject.ext.parceler}"
+  //  debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.leakcanary}"
+  //  releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${rootProject.ext.leakcanary}"
+  //  testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${rootProject.ext.leakcanary}"
 
   testImplementation 'junit:junit:4.12'
-  implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-    transitive = true
-  }
 }
 
 // Logger out test results to console
