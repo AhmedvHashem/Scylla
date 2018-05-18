@@ -27,7 +27,6 @@ public class MyApplication
   @Override
   public void onCreate() {
     super.onCreate();
-    Fabric.with(this, new Crashlytics());
 
     //if (LeakCanary.isInAnalyzerProcess(this)) {
     //  // This process is dedicated to LeakCanary for heap analysis.
