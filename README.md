@@ -1,5 +1,7 @@
 # Scylla Project
 
+[![Build Status](https://travis-ci.org/AhmedNTS/Scylla.svg?branch=master)](https://travis-ci.org/AhmedNTS/Scylla)
+
 ## Libraries
 - Support libraries
 - Design and CardView (optional)
