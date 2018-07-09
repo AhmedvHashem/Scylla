@@ -54,5 +54,7 @@
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 ## Crashlytics
--keep class com.crashlytics.** { *; }
--dontwarn com.crashlytics.**
+#-keep class com.crashlytics.** { *; }
+#-dontwarn com.crashlytics.**
+
+#-keepattributes *Annotation*
