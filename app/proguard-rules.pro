@@ -53,8 +53,12 @@
 # Ignore annotation used for build tooling.
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
-## Crashlytics
-#-keep class com.crashlytics.** { *; }
-#-dontwarn com.crashlytics.**
+-keep class com.crashlytics.** { *; }
+-keep class com.crashlytics.android.**
+-keepattributes SourceFile, LineNumberTable, *Annotation*
 
-#-keepattributes *Annotation*
+# If you are using custom exceptions, add this line so that custom exception types are skipped during obfuscation:
+-keep public class * extends java.lang.Exception
+
+# For Fabric to properly de-obfuscate your crash reports, you need to remove this line from your ProGuard config:
+# -printmapping mapping.txt
