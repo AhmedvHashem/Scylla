@@ -2,8 +2,6 @@ package com.ahmednts.scylla;
 
 import android.app.Application;
 import android.os.StrictMode;
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 /**
