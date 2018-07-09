@@ -18,7 +18,7 @@ dependencies {
   checkstyle 'com.puppycrawl.tools:checkstyle:8.1'
 }
 
-def qualityConfigDir = "$project.rootDir/config";
+def qualityConfigDir = "$project.rootDir/config"
 def reportsDir = "$project.buildDir/reports"
 
 check.dependsOn 'checkstyle', 'findbugs', 'pmd'
