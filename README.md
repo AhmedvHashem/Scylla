@@ -1,6 +1,7 @@
 # Scylla Project
 
 [![Build Status](https://travis-ci.org/AhmedNTS/Scylla.svg?branch=master)](https://travis-ci.org/AhmedNTS/Scylla)
+[![Build Status](https://app.bitrise.io/app/3892f0a6a343b18d/status.svg?token=R5iMUxSJnhKgWl4Inud2cw)](https://app.bitrise.io/app/3892f0a6a343b18d)
 
 ## Libraries
 - Support libraries
