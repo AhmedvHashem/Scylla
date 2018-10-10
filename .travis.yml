@@ -58,4 +58,4 @@ before_install:
 
 script:
 #- "./gradlew clean build"
-- "fastlane beta"
+- "bundle exec fastlane beta"
