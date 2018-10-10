@@ -13,26 +13,34 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+ENV["CRASHLYTICS_API_TOKEN"] = "1bf9f48f478149359ed4f007d6ff8757cc7e9c4f"
+ENV["CRASHLYTICS_BUILD_SECRET"] = "532ff48a3527dd5d40320c6679c7ccf8a74645c6c5a25f9bdc5cd6d15e5ff206"
+ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
+
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  desc "Debug build"
+  lane :buildDebug do
+    gradle(task: "clean assemble", build_type: "Debug")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Release build"
+    lane :buildRelease do
+      gradle(task: "clean assemble", build_type: "Release")
+    end
+
   lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+    buildDebug
+    upload_to_beta_crashlytics()
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+# METHODS
+def upload_to_beta_crashlytics()
+    crashlytics(
+        api_token: ENV["CRASHLYTICS_API_TOKEN"],
+        build_secret: ENV["CRASHLYTICS_BUILD_SECRET"]
+      )
+end
+
 end
