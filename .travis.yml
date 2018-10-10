@@ -13,16 +13,20 @@ cache:
  
 env:
  global:
- - ANDROID_API=27
+ - ANDROID_API=28
  - EMULATOR_API_LEVEL=21
- - ANDROID_BUILD_TOOLS=27.0.3
+ - ANDROID_BUILD_TOOLS_1=28.0.1
+ - ANDROID_BUILD_TOOLS_2=28.0.2
+ - ANDROID_BUILD_TOOLS_3=28.0.3
  - ADB_INSTALL_TIMEOUT=5 # minutes
  
 android:
  components:
  - tools
  - platform-tools
- - build-tools-$ANDROID_BUILD_TOOLS
+ - build-tools-$ANDROID_BUILD_TOOLS_1
+ - build-tools-$ANDROID_BUILD_TOOLS_2
+ - build-tools-$ANDROID_BUILD_TOOLS_3
  - android-$ANDROID_API
  - android-$EMULATOR_API_LEVEL
  - extra-google-m2repository
