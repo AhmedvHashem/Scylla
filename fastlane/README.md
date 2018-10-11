@@ -30,7 +30,7 @@ Release build
 ```
 fastlane android beta
 ```
-
+Debug build then upload it to Crashlytics Beta
 
 ----
 

@@ -25,24 +25,65 @@ platform :android do
   desc "Debug build"
   lane :buildDebug do
     gradle(task: "clean assemble", build_type: "Debug")
+    on_success("Holaaaaaa")
   end
 
   desc "Release build"
-    lane :buildRelease do
-      gradle(task: "clean assemble", build_type: "Release")
-    end
+  lane :buildRelease do
+    gradle(task: "clean assemble", build_type: "Release")
+    on_success("Holaaaaaa")
+  end
 
+  desc "Debug build then upload it to Crashlytics Beta"
   lane :beta do
     buildDebug
     upload_to_beta_crashlytics()
   end
+end
 
 # METHODS
 def upload_to_beta_crashlytics()
     crashlytics(
         api_token: ENV["CRASHLYTICS_API_TOKEN"],
-        build_secret: ENV["CRASHLYTICS_BUILD_SECRET"]
+        build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
+        groups: ['InternalQC'],
+        notes_path: "./release-notes.txt"
       )
 end
 
+def on_success(success_message)
+   slack(
+       message: success_message,
+       success: true,
+       slack_url: ENV["SLACK_WEBHOOK_URL"],
+#       attachment_properties: {
+#           fields: [
+#               {
+#                   title: "Build number",
+#                   value: "",
+#               }
+#           ]
+#       }
+   )
+end
+
+def on_error(exception)
+   slack(
+       message: "Something went wrong!",
+       success: false,
+       slack_url: ENV["SLACK_WEBHOOK_URL"],
+       attachment_properties: {
+           fields: [
+               {
+                   title: "Build number",
+                   value: ENV["BUILD_NUMBER"],
+               },
+               {
+                   title: "Error message",
+                   value: exception.to_s,
+                   short: false
+               }
+           ]
+       }
+   )
 end
