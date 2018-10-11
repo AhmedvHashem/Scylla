@@ -47,7 +47,7 @@ def upload_to_beta_crashlytics()
         api_token: ENV["CRASHLYTICS_API_TOKEN"],
         build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
         groups: ['InternalQC'],
-        notes_path: "./release-notes.txt"
+        notes_path: "../release-notes.txt"
       )
 end
 
