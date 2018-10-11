@@ -48,7 +48,7 @@ def upload_to_beta_crashlytics()
         build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
         emails: "ahmedhashemnts@gmail.com",
         groups: ['InternalQC'],
-        notes: "Scylla debug notes"
+#        notes: "Scylla debug notes"
 #        notes_path: "../release-notes.txt"
       )
 end
