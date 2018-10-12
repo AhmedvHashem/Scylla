@@ -18,6 +18,8 @@ def releasePropertiesFile = rootProject.file("private/release.properties")
 def releaseProperties = new Properties()
 releaseProperties.load(new FileInputStream(releasePropertiesFile))
 
+def currentCommit = 'git rev-parse --short HEAD'.execute().text.trim().subSequence(0, 7)
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -50,6 +52,7 @@ android {
 
             debuggable true
             applicationIdSuffix '.debug'
+            versionNameSuffix "-${currentCommit}"
 
             signingConfig signingConfigs.debugConfig
         }
@@ -75,6 +78,12 @@ android {
 
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor' // butterknife
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = outputFileName.replace(".apk", "-(${variant.versionCode})-(${variant.versionName}).apk")
+        }
     }
 }
 

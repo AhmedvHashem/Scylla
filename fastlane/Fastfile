@@ -13,8 +13,6 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-#setup_travis
-
 ENV["CRASHLYTICS_API_TOKEN"] = "1bf9f48f478149359ed4f007d6ff8757cc7e9c4f"
 ENV["CRASHLYTICS_BUILD_SECRET"] = "532ff48a3527dd5d40320c6679c7ccf8a74645c6c5a25f9bdc5cd6d15e5ff206"
 ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
@@ -37,16 +35,22 @@ platform :android do
   desc "Debug build then upload it to Crashlytics Beta"
   lane :beta do
     buildDebug
-    upload_to_beta_crashlytics()
+    upload_beta()
   end
+
+  desc "Debug build then upload it to Crashlytics Beta"
+    lane :release do
+      buildRelease
+      upload_beta()
+    end
 end
 
 # METHODS
-def upload_to_beta_crashlytics()
+def upload_beta()
     crashlytics(
         api_token: ENV["CRASHLYTICS_API_TOKEN"],
         build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
-        emails: "ahmedhashemnts@gmail.com",
+#        emails: "ahmedhashemnts@gmail.com",
         groups: ['InternalQC'],
 #        notes: "Scylla debug notes"
 #        notes_path: "../release-notes.txt"
