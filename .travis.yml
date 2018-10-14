@@ -2,10 +2,10 @@ language: android
 sudo: required
 jdk: oraclejdk8
 
-#branches:
-#  only:
-#  - master
-#  - /^v.*$/
+branches:
+  only:
+  - dev
+#  - /^build.*$/
 
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -61,10 +61,7 @@ before_install:
 #- android-wait-for-emulator
 #- adb shell input keyevent 82 &
 
-#if: tag IS present
 script:
-#- "./gradlew clean build"
-
 - if [ -z "$TRAVIS_TAG" ];
     then bundle exec fastlane buildDebug;
     else bundle exec fastlane beta;
