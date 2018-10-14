@@ -64,6 +64,8 @@ before_install:
 #if: tag IS present
 script:
 #- "./gradlew clean build"
-- "bundle exec fastlane buildDebug"
-- if [ -z "$TRAVIS_TAG" ]; then exit 0; fi
-- "bundle exec fastlane beta"
+
+- if [ -z "$TRAVIS_TAG" ];
+    then bundle exec fastlane buildDebug;
+    else bundle exec fastlane beta;
+  fi
