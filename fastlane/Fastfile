@@ -45,13 +45,17 @@ platform :android do
     end
 end
 
+error do |lane, exception|
+  on_error(exception)
+end
+
 # METHODS
 def upload_beta()
     crashlytics(
         api_token: ENV["CRASHLYTICS_API_TOKEN"],
         build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
 #        emails: "ahmedhashemnts@gmail.com",
-        groups: ['InternalQC'],
+        groups: ['InternalQA'],
 #        notes: "Scylla debug notes"
 #        notes_path: "../release-notes.txt"
       )
@@ -75,21 +79,9 @@ end
 
 def on_error(exception)
    slack(
-       message: "Something went wrong!",
+       message: exception.to_s,
        success: false,
        slack_url: ENV["SLACK_WEBHOOK_URL"],
-       attachment_properties: {
-           fields: [
-               {
-                   title: "Build number",
-                   value: ENV["BUILD_NUMBER"],
-               },
-               {
-                   title: "Error message",
-                   value: exception.to_s,
-                   short: false
-               }
-           ]
-       }
+       payload: { "Error Info" => exception.error_info.to_s }
    )
 end
