@@ -15,7 +15,7 @@ cache:
  directories:
  - $HOME/.gradle/caches/
  - $HOME/.gradle/wrapper/
- 
+
 env:
  global:
  - ANDROID_API=28
@@ -24,7 +24,7 @@ env:
  - ANDROID_BUILD_TOOLS_2=28.0.2
  - ANDROID_BUILD_TOOLS_3=28.0.3
  - ADB_INSTALL_TIMEOUT=5 # minutes
- 
+
 android:
  components:
  - tools
@@ -46,6 +46,9 @@ licenses:
  - google-gdk-license-.+
  
 before_install:
+ - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_PULL_REQUEST" == "$TRAVIS_TAG" ];
+      then exit 0;
+   fi
  - bundle update
  - bundle install
  - mkdir "$ANDROID_HOME/licenses" || true
@@ -64,7 +67,10 @@ before_install:
 #if: tag IS present
 
 script:
-- if [ -z "$TRAVIS_TAG" ];
+- if [ "$TRAVIS_PULL_REQUEST" != "false" ];
     then bundle exec fastlane buildDebug;
-    else bundle exec fastlane beta;
   fi
+- if [ "$TRAVIS_TAG" != "false" ];
+    then bundle exec fastlane beta;
+  fi
+

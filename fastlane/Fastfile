@@ -24,7 +24,7 @@ platform :android do
   lane :buildDebug do
     begin
       gradle(task: "clean assemble", build_type: "Debug")
-      on_success("Debug build succeed")
+      on_success("Debug build Succeeded!")
     rescue => exception
       on_error(exception)
     end
@@ -34,7 +34,7 @@ platform :android do
   lane :buildRelease do
     begin
       gradle(task: "clean assemble", build_type: "Release")
-      on_success("Release build succeed")
+      on_success("Release build Succeeded!")
     rescue => exception
       on_error(exception)
     end
