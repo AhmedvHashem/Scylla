@@ -44,7 +44,7 @@ platform :android do
 end
 
 after_all do |lane|
-  on_success("Successfully build")
+  on_success("Build is successfully uploaded to the Crashlytics Beta, please check your mail and Beta app")
 end
 
 error do |lane, exception|
@@ -57,7 +57,7 @@ def upload_beta()
         api_token: ENV["CRASHLYTICS_API_TOKEN"],
         build_secret: ENV["CRASHLYTICS_BUILD_SECRET"],
 #        emails: "ahmedhashemnts@gmail.com",
-        groups: ['InternalQC'],
+        groups: ['InternalQA'],
 #        notes: "Scylla debug notes"
 #        notes_path: "../release-notes.txt"
       )
