@@ -65,6 +65,7 @@ before_install:
 #- adb shell input keyevent 82 &
 
 #if: tag IS present
+type IN (tag, pull_request)
 
 script:
 - if [ "$TRAVIS_PULL_REQUEST" != "false" ];
