@@ -46,7 +46,7 @@ licenses:
  - google-gdk-license-.+
  
 before_install:
- - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_PULL_REQUEST" == "$TRAVIS_TAG" ];
+ - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "false" ];
       then exit 0;
    fi
  - bundle update
