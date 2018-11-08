@@ -2,15 +2,14 @@ language: android
 sudo: required
 jdk: oraclejdk8
 
-branches:
-  only:
-  - dev
-  - /^build.*$/
+#branches:
+#  only:
+#  - dev
+#  - /^build.*$/
 
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
- - echo $TRAVIS_BUILD_DIR
 
 cache:
  directories:
@@ -83,5 +82,5 @@ deploy:
   on:
 #    repo: AhmedNTS/Scylla
 #    tags: true
-    branch: /^build.*$/
+    branch: integration/crashlytics
 
