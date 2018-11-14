@@ -2,10 +2,10 @@ language: android
 sudo: required
 jdk: oraclejdk8
 
-#branches:
-#  only:
-#  - dev
-#  - /^build.*$/
+branches:
+  only:
+  - dev
+  - /^build.*$/
 
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -64,13 +64,13 @@ before_install:
 #if: tag IS present
 
 script:
-- bundle exec fastlane buildDebug
-#- if [ "$TRAVIS_PULL_REQUEST" != "false" ];
-#    then bundle exec fastlane buildDebug;
-#  fi
-#- if [ "$TRAVIS_TAG" != "false" ];
-#    then bundle exec fastlane beta;
-#  fi
+#- bundle exec fastlane buildDebug
+- if [ "$TRAVIS_PULL_REQUEST" != "false" ];
+    then bundle exec fastlane buildDebug;
+  fi
+- if [ "$TRAVIS_TAG" != "false" ];
+    then bundle exec fastlane beta;
+  fi
 
 deploy:
   provider: releases
