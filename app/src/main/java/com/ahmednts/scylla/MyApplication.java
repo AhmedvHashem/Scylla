@@ -27,6 +27,7 @@ public class MyApplication
   @Override
   public void onCreate() {
     super.onCreate();
+    setStrictMode();
     Fabric.with(this, new Crashlytics());
 
     //if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -38,8 +39,6 @@ public class MyApplication
     //LeakCanary.install(this);
 
     Timber.plant(new Timber.DebugTree());
-
-    setStrictMode();
   }
 
   private void setStrictMode() {
