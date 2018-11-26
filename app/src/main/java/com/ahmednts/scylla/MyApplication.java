@@ -2,8 +2,6 @@ package com.ahmednts.scylla;
 
 import android.app.Application;
 import android.os.StrictMode;
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 /**
@@ -28,7 +26,6 @@ public class MyApplication
   public void onCreate() {
     super.onCreate();
     setStrictMode();
-    Fabric.with(this, new Crashlytics());
 
     //if (LeakCanary.isInAnalyzerProcess(this)) {
     //  // This process is dedicated to LeakCanary for heap analysis.
