@@ -25,7 +25,7 @@
 ## Coding colour and styles
 
 * https://github.com/AhmedNTS/AndroidStudio-VisualStudio-ColourScheme
-* https://github.com/AhmedNTS/java-code-styles
+* https://github.com/square/java-code-styles
 
 ## Code Quality
 
