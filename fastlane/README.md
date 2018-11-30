@@ -26,11 +26,11 @@ Debug build
 fastlane android buildRelease
 ```
 Release build
-### android beta
+### android deploy_to_github
 ```
-fastlane android beta
+fastlane android deploy_to_github
 ```
-Debug build then upload it to Crashlytics Beta
+Github releases
 
 ----
 

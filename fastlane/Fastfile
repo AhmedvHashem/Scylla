@@ -14,6 +14,7 @@
 # update_fastlane
 
 ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
+ENV["GITHUB_API_TOKEN"] = "1b6276b40c54b93b5bbe3ae56a014fec4c7fe9c9"
 
 default_platform(:android)
 
@@ -36,6 +37,27 @@ platform :android do
     rescue => exception
       on_error(exception)
     end
+  end
+
+  desc "Github releases"
+  lane :deploy_to_github do |options|
+  if options[:release_tag]
+    begin
+      github_release = set_github_release(
+        repository_name: "AhmedNTS/Scylla",
+        api_token: ENV["GITHUB_API_TOKEN"],
+        name: options[:release_name],
+        tag_name: options[:release_tag],
+        description: (File.read("changelog") rescue "No changelog provided"),
+        commitish: options[:release_commit],
+#        upload_assets: ["/Scylla/release-notes.txt"]
+      )
+      puts github_release
+      on_success("Deploy to github releases Succeeded! #{github_release}")
+    rescue => exception
+      on_error(exception)
+    end
+  end
   end
 
 end
