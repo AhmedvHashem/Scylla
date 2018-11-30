@@ -50,7 +50,7 @@ platform :android do
         tag_name: options[:release_tag],
         commitish: options[:release_commit],
 #        description: (File.read("changelog") rescue "No changelog provided"),
-#        upload_assets: ["/Scylla/release-notes.txt"]
+        upload_assets: Dir[options[:release_dir]]
       )
 #      puts options[:release_tag]
 #      puts options[:release_name]
