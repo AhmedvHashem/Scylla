@@ -72,14 +72,14 @@ script:
 #    then bundle exec fastlane buildDebug;
 #  fi
 
-deploy:
-  provider: releases
-  api_key:
-    secure: O8iANmJXQarzWoNMMRsN64pEbZejMRJi0fn6vz2Le/sibTbiFwnaCyrcmlv8z6Y/i6X0zQPHUOk+72l9KPSPbbKy9KyEEVIFiJAMA6ZfdIz92Tu4kE7S3HDjfsGwD11MplKv/q43r3HOJi5T8aXHGOY2YfOLu9/RukogaR8dlWnZcvRovdbT/+WS6Ihxzl3CkHiLWgQHFjSXLcZINDuAoc9aYVddCT6bTyDkYdGXEXrzbwUSHhz2d/vA/5HLkjDPs77HEvcUCZLslYjY2Ig8DwEI3DTmUwIDhRGnG0i7vhjyRhGt84jhJPNwgIO9odUfvoVntXE6Vb93pSxqhvVtPg1Bpr4kYNee/i9eyovmMYc49/gVGdAwchOTH8/M6CPvLyWexI3RYDjKDN5bcfbXuPDQ9LZV4VKARneccRFbNE/myIVVY4Lmg2GPQNbwXiDEn84WvE7bwX0KokEHontZriOHpQANYWsK30JBdZSQ/IaFX2fTVICfGM6dLkMusJLUqjj2yp5M/0DRkP2/OcE3rdj7HAPiJ+feFLN4ULCASdorE9oWb7bowXkzoCmV15lTgjFhYmAjmZaF7BwVTbZ8j9YaRE1tkvr/mYLHFLWtIB4T5C5O1kC5FW+IKwSgIJJmGQxQfu/XmILC04y0vzMfjJqZRF1KN0vKhUBMz5T773c=
-  file_glob: true
-  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/*
-  skip_cleanup: true
-  on:
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: O8iANmJXQarzWoNMMRsN64pEbZejMRJi0fn6vz2Le/sibTbiFwnaCyrcmlv8z6Y/i6X0zQPHUOk+72l9KPSPbbKy9KyEEVIFiJAMA6ZfdIz92Tu4kE7S3HDjfsGwD11MplKv/q43r3HOJi5T8aXHGOY2YfOLu9/RukogaR8dlWnZcvRovdbT/+WS6Ihxzl3CkHiLWgQHFjSXLcZINDuAoc9aYVddCT6bTyDkYdGXEXrzbwUSHhz2d/vA/5HLkjDPs77HEvcUCZLslYjY2Ig8DwEI3DTmUwIDhRGnG0i7vhjyRhGt84jhJPNwgIO9odUfvoVntXE6Vb93pSxqhvVtPg1Bpr4kYNee/i9eyovmMYc49/gVGdAwchOTH8/M6CPvLyWexI3RYDjKDN5bcfbXuPDQ9LZV4VKARneccRFbNE/myIVVY4Lmg2GPQNbwXiDEn84WvE7bwX0KokEHontZriOHpQANYWsK30JBdZSQ/IaFX2fTVICfGM6dLkMusJLUqjj2yp5M/0DRkP2/OcE3rdj7HAPiJ+feFLN4ULCASdorE9oWb7bowXkzoCmV15lTgjFhYmAjmZaF7BwVTbZ8j9YaRE1tkvr/mYLHFLWtIB4T5C5O1kC5FW+IKwSgIJJmGQxQfu/XmILC04y0vzMfjJqZRF1KN0vKhUBMz5T773c=
+#  file_glob: true
+#  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/*
+#  skip_cleanup: true
+#  on:
 #    repo: AhmedNTS/Scylla
 #    tags: true
 #   branch: dev
