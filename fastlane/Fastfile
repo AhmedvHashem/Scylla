@@ -40,7 +40,10 @@ platform :android do
 
   desc "Github releases"
   lane :deploy_to_github do |options|
-  puts options[:release_dir]
+  assets = Dir[options[:release_dir]]
+#  assets = Dir["/Users/ahmednts/Desktop/Projects/Scylla/app/build/outputs/apk/**/*.apk"]
+  puts assets
+
   if options[:release_tag]
     begin
       github_release = set_github_release(
@@ -50,7 +53,7 @@ platform :android do
         tag_name: options[:release_tag],
         commitish: options[:release_commit],
 #        description: (File.read("changelog") rescue "No changelog provided"),
-        upload_assets: Dir[options[:release_dir]]
+        upload_assets: assets
       )
 #      puts options[:release_tag]
 #      puts options[:release_name]
