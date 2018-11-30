@@ -43,7 +43,7 @@ android {
 
       debuggable true
       applicationIdSuffix '.debug'
-      versionNameSuffix "-${currentCommit}"
+      versionNameSuffix "_${currentCommit}"
 
       signingConfig signingConfigs.debugConfig
     }
@@ -74,7 +74,7 @@ android {
   applicationVariants.all { variant ->
     variant.outputs.all {
       outputFileName =
-          outputFileName.replace(".apk", "-(${variant.versionCode})-(${variant.versionName}).apk")
+          outputFileName.replace(".apk", "-${variant.versionCode}-${variant.versionName}.apk")
     }
   }
 }

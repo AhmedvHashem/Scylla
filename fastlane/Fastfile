@@ -40,6 +40,7 @@ platform :android do
 
   desc "Github releases"
   lane :deploy_to_github do |options|
+  puts options[:release_dir]
   if options[:release_tag]
     begin
       github_release = set_github_release(
@@ -48,14 +49,14 @@ platform :android do
         name: options[:release_name],
         tag_name: options[:release_tag],
         commitish: options[:release_commit],
-        description: (File.read("changelog") rescue "No changelog provided"),
+#        description: (File.read("changelog") rescue "No changelog provided"),
 #        upload_assets: ["/Scylla/release-notes.txt"]
       )
-      puts options[:release_tag]
-      puts options[:release_name]
-      puts options[:release_commit]
+#      puts options[:release_tag]
+#      puts options[:release_name]
+#      puts options[:release_commit]
 #      puts github_release
-      on_success("Deploy to github releases Succeeded! #{github_release}")
+      on_success("Deploy to github releases Succeeded!")
     rescue => exception
       on_error(exception)
     end
