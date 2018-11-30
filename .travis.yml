@@ -82,5 +82,5 @@ deploy:
   on:
 #    repo: AhmedNTS/Scylla
 #    tags: true
-    branch: dev
+#   branch: dev
 
