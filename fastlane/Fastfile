@@ -46,10 +46,10 @@ platform :android do
       github_release = set_github_release(
         repository_name: "AhmedNTS/Scylla",
         api_token: ENV["GITHUB_API_TOKEN"],
-        name: options[:release_name],
+        name: "koko",
         tag_name: options[:release_tag],
+        commitish: "dev",
         description: (File.read("changelog") rescue "No changelog provided"),
-        commitish: options[:release_commit],
 #        upload_assets: ["/Scylla/release-notes.txt"]
       )
       puts options[:release_tag]
