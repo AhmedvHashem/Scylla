@@ -14,7 +14,6 @@
 # update_fastlane
 
 ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
-ENV["GITHUB_API_TOKEN"] = "e33e63d586ea3c5c979d4d69037a70a5db9f18f9"
 
 default_platform(:android)
 
@@ -45,7 +44,7 @@ platform :android do
     begin
       github_release = set_github_release(
         repository_name: "AhmedNTS/Scylla",
-        api_token: ENV["GITHUB_API_TOKEN"],
+        api_token: options[:api_token],
         name: options[:release_name],
         tag_name: options[:release_tag],
         commitish: options[:release_commit],
