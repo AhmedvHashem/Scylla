@@ -14,7 +14,7 @@
 # update_fastlane
 
 ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
-ENV["GITHUB_API_TOKEN"] = "1b6276b40c54b93b5bbe3ae56a014fec4c7fe9c9"
+ENV["GITHUB_API_TOKEN"] = "1b37ccdbe564342cd34433902412a2211f5459df"
 
 default_platform(:android)
 
@@ -52,6 +52,9 @@ platform :android do
         commitish: options[:release_commit],
 #        upload_assets: ["/Scylla/release-notes.txt"]
       )
+      puts options[:release_tag]
+      puts options[:release_name]
+      puts options[:release_commit]
       puts github_release
       on_success("Deploy to github releases Succeeded! #{github_release}")
     rescue => exception
