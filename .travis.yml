@@ -66,7 +66,10 @@ before_install:
 
 script:
 # - bundle exec fastlane buildDebug;
- - bundle exec fastlane deploy_to_github release_tag:$TRAVIS_TAG
+- echo $TRAVIS_TAG
+- echo $TRAVIS_COMMIT_MESSAGE
+- echo $TRAVIS_COMMIT
+- bundle exec fastlane deploy_to_github release_tag:$TRAVIS_TAG release_name:$TRAVIS_COMMIT_MESSAGE release_commit:$TRAVIS_COMMIT
 
 #- if [ "$TRAVIS_PULL_REQUEST" != "false" ];
 #    then bundle exec fastlane buildDebug;
