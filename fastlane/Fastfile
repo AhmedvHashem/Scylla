@@ -14,7 +14,7 @@
 # update_fastlane
 
 ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
-ENV["GITHUB_API_TOKEN"] = "1b37ccdbe564342cd34433902412a2211f5459df"
+ENV["GITHUB_API_TOKEN"] = "e33e63d586ea3c5c979d4d69037a70a5db9f18f9"
 
 default_platform(:android)
 
