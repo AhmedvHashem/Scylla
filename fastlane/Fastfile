@@ -40,47 +40,69 @@ platform :android do
 
   desc "Github releases"
   lane :deploy_to_github do |options|
+  repo = "AhmedNTS/Scylla"
   assets = Dir[options[:release_dir]]
-#  assets = Dir["/Users/ahmednts/Desktop/Projects/Scylla/app/build/outputs/apk/**/*.apk"]
+
+  puts options[:release_tag]
+  puts options[:release_name]
+  puts options[:release_commit]
   puts assets
 
-  if options[:release_tag]
-    begin
-      github_release = set_github_release(
-        repository_name: "AhmedNTS/Scylla",
-        api_token: options[:api_token],
-        name: options[:release_name],
-        tag_name: options[:release_tag],
-        commitish: options[:release_commit],
-#        description: (File.read("changelog") rescue "No changelog provided"),
-        upload_assets: assets
-      )
-#      puts options[:release_tag]
-#      puts options[:release_name]
-#      puts options[:release_commit]
-#      puts github_release
-      on_success("Deploy to github releases Succeeded!")
-    rescue => exception
-      on_error(exception)
+    if options[:release_tag]
+      begin
+        github_release = set_github_release(
+          repository_name: repo,
+          api_token: options[:api_token],
+          name: options[:release_name],
+          tag_name: options[:release_tag],
+          commitish: options[:release_commit],
+          description: "No changelog provided",
+          upload_assets: assets
+        )
+
+        puts github_release
+
+        on_deploy_success("Deploy to github releases Succeeded!", repo, options[:release_tag])
+      rescue => exception
+        on_error(exception)
+      end
     end
-  end
   end
 
 end
 
 def on_success(success_message)
     slack(
-       message: success_message,
-       success: true,
-       slack_url: ENV["SLACK_WEBHOOK_URL"]
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      message: success_message,
+      success: true,
+      default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash]
+    )
+end
+
+def on_deploy_success(success_message, repo, tag)
+    slack(
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      message: success_message,
+      success: true,
+      default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
+      attachment_properties: {
+      "actions": [{
+       "type": "button",
+       "text": "Build Link",
+       "style": "primary",
+       "url": "https://github.com/#{repo}/releases/tag/#{tag}"
+       }]
+      }
     )
 end
 
 def on_error(exception)
     slack(
+       slack_url: ENV["SLACK_WEBHOOK_URL"],
        message: "Something went wrong! check *Error Info* for more details.",
        success: false,
-       slack_url: ENV["SLACK_WEBHOOK_URL"],
        payload: { "Error Info" => exception.to_s }
     )
 end
+
