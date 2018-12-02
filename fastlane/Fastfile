@@ -89,7 +89,7 @@ def on_deploy_success(success_message, repo, tag)
       attachment_properties: {
       "actions": [{
        "type": "button",
-       "text": "Build Link",
+       "text": "View Build",
        "style": "primary",
        "url": "https://github.com/#{repo}/releases/tag/#{tag}"
        }]
