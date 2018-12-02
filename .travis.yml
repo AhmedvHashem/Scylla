@@ -66,8 +66,8 @@ script:
 - bundle exec fastlane buildDebug;
 
 - if [ "$TRAVIS_PULL_REQUEST" != "false" ];
-    then bundle exec fastlane deploy_to_github api_token:$GITHUB_API_TOKEN release_tag:$TRAVIS_TAG release_name:$TRAVIS_TAG release_commit:$TRAVIS_COMMIT release_dir:$TRAVIS_BUILD_DIR/app/build/outputs/apk/**/*.apk
+    then bundle exec fastlane deploy_to_github api_token:$GITHUB_API_TOKEN release_tag:$TRAVIS_TAG release_name:$TRAVIS_TAG release_commit:$TRAVIS_COMMIT release_dir:$TRAVIS_BUILD_DIR/app/build/outputs/apk/**/*.apk;
   fi
 - if [ "$TRAVIS_TAG" != "false" ];
-    then bundle exec fastlane deploy_to_github api_token:$GITHUB_API_TOKEN release_tag:$TRAVIS_TAG release_name:$TRAVIS_TAG release_commit:$TRAVIS_COMMIT release_dir:$TRAVIS_BUILD_DIR/app/build/outputs/apk/**/*.apk
+    then bundle exec fastlane deploy_to_github api_token:$GITHUB_API_TOKEN release_tag:$TRAVIS_TAG release_name:$TRAVIS_TAG release_commit:$TRAVIS_COMMIT release_dir:$TRAVIS_BUILD_DIR/app/build/outputs/apk/**/*.apk;
   fi
