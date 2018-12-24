@@ -87,7 +87,7 @@ platform :android do
     s3_access_key = options[:s3_access_key]
     s3_secret_access_key = options[:s3_secret_access_key]
 
-    apk_file_path = Dir[options[:apk_file_path]]
+    apk_file_path = Dir[options[:apk_file_path]].at(0)
 
     puts apk_file_path
 
@@ -129,7 +129,7 @@ platform :android do
 
   desc "File Test"
   lane :fileTest do |options|
-    apk_file_path = Dir['/Users/ahmedhashem/Desktop/Projects/Scylla/app/build/outputs/apk/debug/*.apk']
+    apk_file_path = Dir['/Users/ahmedhashem/Desktop/Projects/Scylla/app/build/outputs/apk/debug/*.apk'].at(0)
     puts apk_file_path
   end
 
