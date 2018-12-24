@@ -36,6 +36,11 @@ Github releases
 fastlane android deploy_to_s3
 ```
 Deploy to S3
+### android fileTest
+```
+fastlane android fileTest
+```
+File Test
 
 ----
 

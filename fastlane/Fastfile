@@ -87,9 +87,6 @@ platform :android do
     s3_access_key = options[:s3_access_key]
     s3_secret_access_key = options[:s3_secret_access_key]
 
-
-  assets = Dir[options[:release_dir]]
-
     apk_file_path = Dir[options[:apk_file_path]]
 
     puts apk_file_path
@@ -128,6 +125,12 @@ platform :android do
     rescue => exception
       on_error(exception)
     end
+  end
+
+  desc "File Test"
+  lane :fileTest do |options|
+    apk_file_path = Dir['/Users/ahmedhashem/Desktop/Projects/Scylla/app/build/outputs/apk/debug/*.apk']
+    puts apk_file_path
   end
 
 end
