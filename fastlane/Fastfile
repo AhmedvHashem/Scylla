@@ -64,7 +64,7 @@ platform :android do
 
       slack(
         slack_url: ENV["SLACK_WEBHOOK_URL"],
-        message: success_message,
+        message: "Deploy to github releases Succeeded!",
         success: true,
         default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
         attachment_properties: {
@@ -110,7 +110,7 @@ platform :android do
       
       slack(
         slack_url: ENV["SLACK_WEBHOOK_URL"],
-        message: success_message,
+        message: "Build successfully uploaded to S3!",
         success: true,
         default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
         attachment_properties: {
@@ -125,12 +125,6 @@ platform :android do
     rescue => exception
       on_error(exception)
     end
-  end
-
-  desc "File Test"
-  lane :fileTest do |options|
-    apk_file_path = Dir['/Users/ahmedhashem/Desktop/Projects/Scylla/app/build/outputs/apk/debug/*.apk'].at(0)
-    puts apk_file_path
   end
 
 end
