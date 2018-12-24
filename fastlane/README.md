@@ -31,6 +31,11 @@ Release build
 fastlane android deploy_to_github
 ```
 Github releases
+### android deploy_to_s3
+```
+fastlane android deploy_to_s3
+```
+Deploy to S3
 
 ----
 

@@ -5,12 +5,17 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.005929">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00172">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: slack" time="0.824474">
+      <testcase classname="fastlane.lanes" name="1: aws_s3" time="45.437648">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: slack" time="1.229421">
         
       </testcase>
     
