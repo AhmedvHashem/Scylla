@@ -87,7 +87,10 @@ platform :android do
     s3_access_key = options[:s3_access_key]
     s3_secret_access_key = options[:s3_secret_access_key]
 
-    apk_file_path = options[:apk_file_path]
+
+  assets = Dir[options[:release_dir]]
+
+    apk_file_path = Dir[options[:apk_file_path]]
 
     puts apk_file_path
 
