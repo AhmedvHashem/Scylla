@@ -130,6 +130,7 @@ platform :android do
 end
 
 def on_success(success_message)
+    puts success_message
     slack(
       slack_url: ENV["SLACK_WEBHOOK_URL"],
       message: success_message,
@@ -139,6 +140,7 @@ def on_success(success_message)
 end
 
 def on_error(exception)
+    puts exception
     slack(
        slack_url: ENV["SLACK_WEBHOOK_URL"],
        message: "Something went wrong! check *Error Info* for more details.",
