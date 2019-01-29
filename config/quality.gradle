@@ -1,19 +1,6 @@
-/**
- * Set up Checkstyle, Findbugs and PMD to perform extensive code analysis.
- *
- * Gradle tasks added:
- * - checkstyle
- * - findbugs
- * - pmd
- *
- * The three tasks above are added as dependencies of the check task so running check will
- * run all of them.*/
-
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 dependencies {
   checkstyle 'com.puppycrawl.tools:checkstyle:8.14'
@@ -23,6 +10,15 @@ def qualityConfigDir = "$project.rootDir/config"
 def reportsDir = "$project.buildDir/reports"
 
 check.dependsOn 'checkstyle', 'findbugs', 'pmd'
+
+android {
+  lintOptions {
+    lintConfig file("$qualityConfigDir/lint/rules-lint.xml")
+    htmlOutput file("$reportsDir/lint/lint.html")
+    warningsAsErrors true
+    xmlReport false
+  }
+}
 
 task checkstyle(type: Checkstyle,
     group: 'Verification',
