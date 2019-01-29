@@ -67,7 +67,6 @@ task findbugs(type: FindBugs,
   classpath = files()
 }
 
-
 task pmd(type: Pmd,
     group: 'Verification',
     description: 'Inspect sourcecode for bugs') {
