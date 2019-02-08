@@ -39,18 +39,11 @@ class MyApplication : Application() {
   private fun setStrictMode() {
     if (BuildConfig.DEBUG) {
       StrictMode.setThreadPolicy(
-          StrictMode.ThreadPolicy.Builder().detectDiskReads()
-              .detectDiskWrites()
-              .detectNetwork()   // or .detectAll() for all detectable problems
-              .penaltyLog()
-              .build()
+        StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork()   // or .detectAll() for all detectable problems
+          .penaltyLog().build()
       )
       StrictMode.setVmPolicy(
-          StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects()
-              .detectLeakedClosableObjects()
-              .penaltyLog()
-              .penaltyDeath()
-              .build()
+        StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects().penaltyLog().penaltyDeath().build()
       )
     }
   }

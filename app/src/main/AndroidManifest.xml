@@ -13,9 +13,6 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-    <meta-data
-        android:name="io.fabric.ApiKey"
-        android:value="1bf9f48f478149359ed4f007d6ff8757cc7e9c4f"/>
 
     <activity android:name=".MainActivity">
       <intent-filter>
