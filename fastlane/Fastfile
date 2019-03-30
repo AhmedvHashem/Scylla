@@ -22,7 +22,7 @@ platform :android do
   lane :buildDebug do
     begin
       gradle(task: "clean assemble", build_type: "Debug")
-      on_success("Debug build Succeeded!")
+      # on_success("Debug build Succeeded!")
     rescue => exception
       on_error(exception)
     end
@@ -32,54 +32,54 @@ platform :android do
   lane :buildRelease do
     begin
       gradle(task: "clean assemble", build_type: "Release")
-      on_success("Release build Succeeded!")
+      # on_success("Release build Succeeded!")
     rescue => exception
       on_error(exception)
     end
   end
 
-  desc "Github releases"
+  desc "Deploy to github releases"
   lane :deploy_to_github do |options|
-  repo = "AhmedNTS/Scylla"
-  assets = Dir[options[:release_dir]]
+    repo = "AhmedNTS/Scylla"
+    assets = Dir[options[:release_dir]]
 
-  puts options[:release_tag]
-  puts options[:release_name]
-  puts options[:release_commit]
-  puts assets
+    puts options[:release_tag]
+    puts options[:release_name]
+    puts options[:release_commit]
+    puts assets
 
-  if options[:release_tag]
-    begin
-      github_release = set_github_release(
-        repository_name: repo,
-        api_token: options[:api_token],
-        name: options[:release_name],
-        tag_name: options[:release_tag],
-        commitish: options[:release_commit],
-        description: "No changelog provided",
-        upload_assets: assets
-      )
+    if options[:release_tag]
+      begin
+        github_release = set_github_release(
+          repository_name: repo,
+          api_token: options[:api_token],
+          name: options[:release_name],
+          tag_name: options[:release_tag],
+          commitish: options[:release_commit],
+          description: "No changelog provided",
+          upload_assets: assets
+        )
 
-      puts github_release
+        puts github_release
 
-      slack(
-        slack_url: ENV["SLACK_WEBHOOK_URL"],
-        message: "Deploy to github releases Succeeded!",
-        success: true,
-        default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
-        attachment_properties: {
-        "actions": [{
-        "type": "button",
-        "text": "View Build",
-        "style": "primary",
-        "url": "https://github.com/#{repo}/releases/tag/#{options[:release_tag]}"
-        }]
-        }
-      )
-    rescue => exception
-      on_error(exception)
+        slack(
+          slack_url: ENV["SLACK_WEBHOOK_URL"],
+          message: "Deploy to github releases Succeeded!",
+          success: true,
+          default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
+          attachment_properties: {
+          "actions": [{
+          "type": "button",
+          "text": "View Build",
+          "style": "primary",
+          "url": "https://github.com/#{repo}/releases/tag/#{options[:release_tag]}"
+          }]
+          }
+        )
+      rescue => exception
+        on_error(exception)
+      end
     end
-  end
   end
 
   desc "Deploy to S3"
@@ -88,20 +88,21 @@ platform :android do
     s3_secret_access_key = options[:s3_secret_access_key]
 
     apk_file_path = Dir[options[:apk_file_path]].at(0)
-
     puts apk_file_path
+    file_name = File.basename(apk_file_path, ".*")
+    puts file_name
 
     begin
       aws_s3(
         access_key: s3_access_key,
         secret_access_key: s3_secret_access_key,
-        bucket: 'eventtus-mobile-builds',
+        bucket: 'android-builds',
         region: 'us-east-1',
         # acl: ENV['S3_ACL'],                             # Optional - defaults to 'public-read'
 
         apk: apk_file_path,
       
-        # app_directory: 'ios_or_android',                # Optional but nice if you want to put multiple apps in same bucket
+         app_directory: file_name,                # Optional but nice if you want to put multiple apps in same bucket
       
         upload_metadata: true,                          # Upload version.json, plist and HTML. Set to false to skip uploading of these files.
         # version_file_name: 'app_version.json',          # Name of the file to upload to S3. Defaults to 'version.json'
@@ -112,13 +113,13 @@ platform :android do
         slack_url: ENV["SLACK_WEBHOOK_URL"],
         message: "Build successfully uploaded to S3!",
         success: true,
-        default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
+        default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
         attachment_properties: {
         "actions": [{
         "type": "button",
         "text": "View Build",
         "style": "primary",
-        "url": "https://eventtus-mobile-builds.s3.amazonaws.com/index.html"
+        "url": "https://android-builds.s3.amazonaws.com/#{file_name}/index.html"
         }]
         }
       )
@@ -135,7 +136,7 @@ def on_success(success_message)
       slack_url: ENV["SLACK_WEBHOOK_URL"],
       message: success_message,
       success: true,
-      default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash]
+      default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash]
     )
 end
 
@@ -145,6 +146,7 @@ def on_error(exception)
        slack_url: ENV["SLACK_WEBHOOK_URL"],
        message: "Something went wrong! check *Error Info* for more details.",
        success: false,
+       default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
        payload: { "Error Info" => exception.to_s }
     )
 end
