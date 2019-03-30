@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-//apply from: '../config/quality.gradle'
+apply from: '../config/quality.gradle'
 
 def releasePropertiesFile = rootProject.file("private/release.properties")
 def releaseProperties = new Properties()
