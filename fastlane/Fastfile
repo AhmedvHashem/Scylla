@@ -66,7 +66,7 @@ platform :android do
           slack_url: ENV["SLACK_WEBHOOK_URL"],
           message: "Deploy to github releases Succeeded!",
           success: true,
-          default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
+          default_payloads: [:git_branch, options[:release_tag], :git_author, :last_git_commit_message, :last_git_commit_hash],
           attachment_properties: {
           "actions": [{
           "type": "button",
