@@ -23,7 +23,9 @@ android {
   }
 }
 
-task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code style checks') {
+task checkstyle(type: Checkstyle,
+    group: 'Verification',
+    description: 'Runs code style checks') {
 
   configFile file("$qualityConfigDir/checkstyle/simple_checks.xml")
   source sourceDir
