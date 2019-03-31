@@ -2,9 +2,9 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
-dependencies {
-  checkstyle 'com.puppycrawl.tools:checkstyle:8.14'
-}
+//dependencies {
+//  checkstyle 'com.puppycrawl.tools:checkstyle:8.14'
+//}
 
 def qualityConfigDir = "$project.rootDir/config"
 def reportsDir = "$project.buildDir/reports"
@@ -68,7 +68,7 @@ task pmd(type: Pmd,
   source sourceDir
 
   ignoreFailures = false
-  ruleSets = []
+  ruleSets = [] // https://stackoverflow.com/questions/32247190/pmd-exclude-pattern-with-gradle
 
   reports {
     xml.enabled false
