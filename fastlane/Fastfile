@@ -1,0 +1,153 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
+
+default_platform(:android)
+
+platform :android do
+  desc "Debug build"
+  lane :buildDebug do
+    begin
+      gradle(task: "clean assemble", build_type: "Debug")
+      # on_success("Debug build Succeeded!")
+    rescue => exception
+      on_error(exception)
+    end
+  end
+
+  desc "Release build"
+  lane :buildRelease do
+    begin
+      gradle(task: "clean assemble", build_type: "Release")
+      # on_success("Release build Succeeded!")
+    rescue => exception
+      on_error(exception)
+    end
+  end
+
+  desc "Deploy to github releases"
+  lane :deploy_to_github do |options|
+    repo = "AhmedNTS/Scylla"
+    assets = Dir[options[:release_dir]]
+
+    puts options[:release_tag]
+    puts options[:release_name]
+    puts options[:release_commit]
+    puts assets
+
+    if options[:release_tag]
+      begin
+        github_release = set_github_release(
+          repository_name: repo,
+          api_token: options[:api_token],
+          name: options[:release_name],
+          tag_name: options[:release_tag],
+          commitish: options[:release_commit],
+          description: "No changelog provided",
+          upload_assets: assets
+        )
+
+        puts github_release
+
+        slack(
+          slack_url: ENV["SLACK_WEBHOOK_URL"],
+          message: "Deploy to github releases Succeeded! for #{options[:release_tag]}",
+          success: true,
+          default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
+          attachment_properties: {
+          "actions": [{
+          "type": "button",
+          "text": "View Build",
+          "style": "primary",
+          "url": "https://github.com/#{repo}/releases/tag/#{options[:release_tag]}"
+          }]
+          }
+        )
+      rescue => exception
+        on_error(exception)
+      end
+    end
+  end
+
+  desc "Deploy to S3"
+  lane :deploy_to_s3 do |options|
+    s3_access_key = options[:s3_access_key]
+    s3_secret_access_key = options[:s3_secret_access_key]
+
+    apk_file_path = Dir[options[:apk_file_path]].at(0)
+    puts apk_file_path
+    file_name = File.basename(apk_file_path, ".*")
+    puts file_name
+
+    begin
+      aws_s3(
+        access_key: s3_access_key,
+        secret_access_key: s3_secret_access_key,
+        bucket: 'android-builds',
+        region: 'us-east-1',
+        # acl: ENV['S3_ACL'],                             # Optional - defaults to 'public-read'
+
+        apk: apk_file_path,
+      
+         app_directory: file_name,                # Optional but nice if you want to put multiple apps in same bucket
+      
+        upload_metadata: true,                          # Upload version.json, plist and HTML. Set to false to skip uploading of these files.
+        # version_file_name: 'app_version.json',          # Name of the file to upload to S3. Defaults to 'version.json'
+        # version_template_path: 'path/to/erb'            # Path to an ERB to configure the structure of the version JSON file
+      )
+      
+      slack(
+        slack_url: ENV["SLACK_WEBHOOK_URL"],
+        message: "Build successfully uploaded to S3!",
+        success: true,
+        default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
+        attachment_properties: {
+        "actions": [{
+        "type": "button",
+        "text": "View Build",
+        "style": "primary",
+        "url": "https://android-builds.s3.amazonaws.com/#{file_name}/index.html"
+        }]
+        }
+      )
+    rescue => exception
+      on_error(exception)
+    end
+  end
+
+end
+
+def on_success(success_message)
+    puts success_message
+    slack(
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      message: success_message,
+      success: true,
+      default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash]
+    )
+end
+
+def on_error(exception)
+    puts exception
+    slack(
+       slack_url: ENV["SLACK_WEBHOOK_URL"],
+       message: "Something went wrong! check *Error Info* for more details.",
+       success: false,
+       default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
+       payload: { "Error Info" => exception.to_s }
+    )
+end
+
