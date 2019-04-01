@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.preference.PreferenceManager
-import java.util.Locale
+import java.util.*
 
 /**
  * Created by AhmedNTS on 4/22/2017.
@@ -20,8 +20,8 @@ object AppLocaleManager {
   }
 
   fun setLocale(
-    context: Context,
-    language: String
+      context: Context,
+      language: String
   ) {
     setLanguage(context, language)
     updateLocaleResources(context, language)
@@ -34,8 +34,8 @@ object AppLocaleManager {
 
   @SuppressLint("ApplySharedPref")
   private fun setLanguage(
-    context: Context,
-    language: String
+      context: Context,
+      language: String
   ) {
     PreferenceManager.getDefaultSharedPreferences(context)
         .edit()
@@ -44,8 +44,8 @@ object AppLocaleManager {
   }
 
   private fun updateLocaleResources(
-    context: Context,
-    language: String?
+      context: Context,
+      language: String?
   ): Context {
     val locale = Locale(language)
     Locale.setDefault(locale)

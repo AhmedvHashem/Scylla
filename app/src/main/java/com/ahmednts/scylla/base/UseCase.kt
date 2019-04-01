@@ -5,7 +5,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 abstract class UseCase internal constructor(
-  protected val workerThread: Scheduler, protected val uiThread: Scheduler
+  protected val workerThread: Scheduler,
+  protected val uiThread: Scheduler
 ) {
   private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 

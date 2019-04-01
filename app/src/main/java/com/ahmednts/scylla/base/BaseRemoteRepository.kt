@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import retrofit2.Response
 
-abstract class BaseRepository {
+abstract class BaseRemoteRepository {
   private val gson = GsonBuilder().create()
 
   @Throws(ApiException::class)
@@ -19,7 +19,7 @@ abstract class BaseRepository {
     val jsonObject = gson.fromJson(response.errorBody()?.string(), JsonObject::class.java)
     jsonObject?.let {
       val errorMessage = it.get("msg")?.toString()
-      Log.e("BaseRepository", "handleFailure: $errorMessage")
+      Log.e("BaseRemoteRepository", "handleFailure: $errorMessage")
       throw ApiException("RemoteError", errorMessage)
     }
   }
