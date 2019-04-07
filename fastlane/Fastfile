@@ -42,49 +42,56 @@ platform :android do
   lane :deploy_to_github do |options|
     repo = "AhmedNTS/Scylla"
     assets = Dir[options[:release_dir]]
-
-    puts options[:release_tag]
-    puts options[:release_name]
-    puts options[:release_commit]
     puts assets
 
-    if options[:release_tag]
+    git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    git_commit_hash = ENV["TRAVIS_COMMIT"]
+
+    build_url = ENV["TRAVIS_BUILD_WEB_URL"]
+    install_url = "https://github.com/#{repo}/releases/tag/#{git_tag}"
+
+    if git_tag
       begin
         github_release = set_github_release(
           repository_name: repo,
           api_token: options[:api_token],
-          name: options[:release_name],
-          tag_name: options[:release_tag],
-          commitish: options[:release_commit],
+          name: git_tag,
+          tag_name: git_tag,
+          commitish: git_commit_hash,
           description: "No changelog provided",
           upload_assets: assets
         )
-
         puts github_release
 
         slack(
           slack_url: ENV["SLACK_WEBHOOK_URL"],
-          message: "Deploy to github releases Succeeded! for #{options[:release_tag]}",
+          message: "Deploy to github releases Succeeded!",
           success: true,
-          # default_payloads: [:git_branch, :git_author, :last_git_commit_message, :last_git_commit_hash],
+          default_payloads: [],
           payload: {
-            "Git Author" => :git_author,
-            "Git Branch" => ENV["TRAVIS_BRANCH"],
-            "Git Commit" => ENV["TRAVIS_COMMIT_MESSAGE"],
-            "Git Tag" => ENV["TRAVIS_TAG"]
+            "Git Author" => [:git_author],
+            "Git Branch" => git_branch,
+            "Git Tag" => git_tag,
+            "Git Commit Message" => git_commit_msg,
+            "Git Commit Hash" => git_commit_hash
           },
           attachment_properties: {
-          "actions": [{
-              "type": "button",
-              "text": "View Build",
-              "style": "primary",
-              "url": ENV["TRAVIS_BUILD_WEB_URL"]
-          }, {
-               "type": "button",
-               "text": "Install Build",
-               "style": "primary",
-               "url": "https://github.com/#{repo}/releases/tag/#{options[:release_tag]}"
-           }]
+            "actions": [
+              {
+                "type": "button",
+                "text": "View Build",
+                "style": "primary",
+                "url": build_url
+              }, 
+              {
+                "type": "button",
+                "text": "Install Build",
+                "style": "primary",
+                "url": install_url
+              }
+            ]
           }
         )
       rescue => exception
