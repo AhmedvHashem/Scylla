@@ -52,6 +52,12 @@ before_install:
 #- ./gradlew dependencies || true # DON'T ADD unless you are getting "Install missing components using SDK manager"
 
 script:
+- echo $TRAVIS_BUILD_NUMBER
+- echo $TRAVIS_REPO_SLUG
+- echo $TRAVIS_BRANCH
+- echo $TRAVIS_COMMIT
+- echo $TRAVIS_TAG
+
 - bundle exec fastlane buildDebug;
 
 #- if [ "$TRAVIS_PULL_REQUEST" != "false" ];
