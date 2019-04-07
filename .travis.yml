@@ -53,13 +53,14 @@ before_install:
 
 script:
 - echo $TRAVIS_BUILD_NUMBER
+- echo $TRAVIS_BUILD_WEB_URL
 - echo $TRAVIS_REPO_SLUG
 - echo $TRAVIS_BRANCH
 - echo $TRAVIS_COMMIT
 - echo $TRAVIS_TAG
 
-- if [ "$TRAVIS_TAG" != "" ];
-  then echo "inside block"
+- if [ ! "$TRAVIS_TAG" = "" ];
+  then echo "inside block";
   fi
 #- bundle exec fastlane buildDebug;
 
