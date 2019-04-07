@@ -70,16 +70,21 @@ platform :android do
           payload: {
             "Git Author" => :git_author,
             "Git Branch" => ENV["TRAVIS_BRANCH"],
-            "Git Commit" => ENV["TRAVIS_COMMIT_MESSAGE"]
+            "Git Commit" => ENV["TRAVIS_COMMIT_MESSAGE"],
             "Git Tag" => ENV["TRAVIS_TAG"]
           },
           attachment_properties: {
           "actions": [{
-          "type": "button",
-          "text": "View Build",
-          "style": "primary",
-          "url": "https://github.com/#{repo}/releases/tag/#{options[:release_tag]}"
-          }]
+              "type": "button",
+              "text": "View Build",
+              "style": "primary",
+              "url": ENV["TRAVIS_BUILD_WEB_URL"]
+          }, {
+               "type": "button",
+               "text": "Install Build",
+               "style": "primary",
+               "url": "https://eventtus-mobile-builds.s3.amazonaws.com/#{file_name}/index.html"
+           }]
           }
         )
       rescue => exception
