@@ -67,14 +67,14 @@ platform :android do
 
         slack(
           slack_url: ENV["SLACK_WEBHOOK_URL"],
-          message: "Deploy to github releases Succeeded!",
+          pretext: "Deploy to github releases Succeeded!",
+          message: git_commit_msg,
           success: true,
           default_payloads: [],
           payload: {
-            "Git Author" => [:git_author],
+            "Git Author" => git_author,
             "Git Branch" => git_branch,
             "Git Tag" => git_tag,
-            "Git Commit Message" => git_commit_msg,
             "Git Commit Hash" => git_commit_hash
           },
           attachment_properties: {
@@ -88,7 +88,6 @@ platform :android do
               {
                 "type": "button",
                 "text": "Install Build",
-                "style": "primary",
                 "url": install_url
               }
             ]
@@ -150,22 +149,66 @@ end
 
 def on_success(success_message)
     puts success_message
+    git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    git_commit_hash = ENV["TRAVIS_COMMIT"]
+    build_url = ENV["TRAVIS_BUILD_WEB_URL"]
+
     slack(
       slack_url: ENV["SLACK_WEBHOOK_URL"],
-      message: success_message,
+      pretext: success_message,
+      message: git_commit_msg,
       success: true,
-      default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash]
+      default_payloads: [],
+      payload: {
+        "Git Author" => git_author,
+        "Git Branch" => git_branch,
+        "Git Tag" => git_tag,
+        "Git Commit Hash" => git_commit_hash
+      },
+      attachment_properties: {
+        "actions": [
+          {
+            "type": "button",
+            "text": "View Build",
+            "style": "primary",
+            "url": build_url
+          }
+        ]
+      }
     )
 end
 
 def on_error(exception)
     puts exception
+    git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    git_commit_hash = ENV["TRAVIS_COMMIT"]
+    build_url = ENV["TRAVIS_BUILD_WEB_URL"]
+
     slack(
        slack_url: ENV["SLACK_WEBHOOK_URL"],
-       message: "Something went wrong! check *Error Info* for more details.",
+       pretext: exception.to_s,
+       message: git_commit_msg,
        success: false,
-       default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
-       payload: { "Error Info" => exception.to_s }
+       default_payloads: [],
+       payload: {
+        "Git Author" => git_author,
+        "Git Branch" => git_branch,
+        "Git Tag" => git_tag,
+        "Git Commit Hash" => git_commit_hash
+      },
+      attachment_properties: {
+        "actions": [
+          {
+            "type": "button",
+            "text": "View Build",
+            "style": "danger",
+            "url": build_url
+          }
+        ]
+      }
     )
 end
-
