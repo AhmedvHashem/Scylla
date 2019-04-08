@@ -82,7 +82,7 @@ platform :android do
           message: "*#{git_commit_msg}*",
           success: true,
           use_webhook_configured_username_and_icon: false,
-          icon_url: app_icon
+          icon_url: app_icon,
           default_payloads: [],
           payload: {
             "Git Author" => git_author_info,
