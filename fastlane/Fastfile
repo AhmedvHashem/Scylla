@@ -44,12 +44,13 @@ platform :android do
     assets = Dir[options[:release_dir]]
     puts assets
 
-    git_author = last_git_commit[:author]
-    git_author_email = last_git_commit[:author_email]
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
     git_author_info = "#{git_author} (#{git_author_email})"
-    git_commit_msg = last_git_commit[:message]
-    git_commit_hash = last_git_commit[:commit_hash]
-    git_commit_hash_short = last_git_commit[:abbreviated_commit_hash]
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
+    git_commit_hash_short = commit[:abbreviated_commit_hash]
 
     # git_branch = ENV["TRAVIS_BRANCH"]
     git_tag = ENV["TRAVIS_TAG"]
@@ -79,10 +80,10 @@ platform :android do
         slack(
           slack_url: ENV["SLACK_WEBHOOK_URL"],
           pretext: "Deploy to github releases Succeeded!",
-          message: "*#{git_commit_msg}*",
+          message: git_commit_msg,
           success: true,
-          use_webhook_configured_username_and_icon: false,
-          icon_url: app_icon,
+          # use_webhook_configured_username_and_icon: false,
+          # icon_url: app_icon,
           default_payloads: [],
           payload: {
             "Git Author" => git_author_info,
@@ -162,12 +163,12 @@ end
 
 def on_success(success_message)
     puts success_message
-    git_author = last_git_commit[:author]
-    git_author_email = last_git_commit[:author_email]
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
     git_author_info = "#{git_author} (#{git_author_email})"
-    git_commit_msg = last_git_commit[:message]
-    git_commit_hash = last_git_commit[:commit_hash]
-    git_commit_hash_short = last_git_commit[:abbreviated_commit_hash]
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
 
     # git_branch = ENV["TRAVIS_BRANCH"]
     git_tag = ENV["TRAVIS_TAG"]
@@ -179,7 +180,7 @@ def on_success(success_message)
     slack(
       slack_url: ENV["SLACK_WEBHOOK_URL"],
       pretext: success_message,
-      message: "*#{git_commit_msg}*",
+      message: git_commit_msg,
       success: true,
       default_payloads: [],
       payload: {
@@ -203,12 +204,12 @@ end
 
 def on_error(exception)
     puts exception
-    git_author = last_git_commit[:author]
-    git_author_email = last_git_commit[:author_email]
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
     git_author_info = "#{git_author} (#{git_author_email})"
-    git_commit_msg = last_git_commit[:message]
-    git_commit_hash = last_git_commit[:commit_hash]
-    git_commit_hash_short = last_git_commit[:abbreviated_commit_hash]
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
 
     # git_branch = ENV["TRAVIS_BRANCH"]
     git_tag = ENV["TRAVIS_TAG"]
@@ -218,7 +219,7 @@ def on_error(exception)
     slack(
        slack_url: ENV["SLACK_WEBHOOK_URL"],
        pretext: exception.to_s,
-       message: "*#{git_commit_msg}*",
+       message: git_commit_msg,
        success: false,
        default_payloads: [],
        payload: {
