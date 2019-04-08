@@ -44,10 +44,19 @@ platform :android do
     assets = Dir[options[:release_dir]]
     puts assets
 
-    git_branch = ENV["TRAVIS_BRANCH"]
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
+    # git_branch = ENV["TRAVIS_BRANCH"]
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
+    git_commit_hash_short = commit[:abbreviated_commit_hash]
+
+    # git_author = last_git_commit[:author]
+    # git_branch = ENV["TRAVIS_BRANCH"]
     git_tag = ENV["TRAVIS_TAG"]
-    git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
-    git_commit_hash = ENV["TRAVIS_COMMIT"]
+    # git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    # git_commit_hash = ENV["TRAVIS_COMMIT"]
 
     build_url = ENV["TRAVIS_BUILD_WEB_URL"]
     install_url = "https://github.com/#{repo}/releases/tag/#{git_tag}"
