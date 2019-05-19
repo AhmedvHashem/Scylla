@@ -1,42 +1,39 @@
-/**
- * Set up Checkstyle, Findbugs and PMD to perform extensive code analysis.
- *
- * Gradle tasks added:
- * - checkstyle
- * - findbugs
- * - pmd
- *
- * The three tasks above are added as dependencies of the check task so running check will
- * run all of them.*/
-
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
-dependencies {
-  checkstyle 'com.puppycrawl.tools:checkstyle:8.14'
-}
+//dependencies {
+//  checkstyle 'com.puppycrawl.tools:checkstyle:8.14'
+//}
 
 def qualityConfigDir = "$project.rootDir/config"
 def reportsDir = "$project.buildDir/reports"
 
+def sourceDir = fileTree("$project.projectDir/src/main/java")
+def classesDir = fileTree("$project.buildDir/intermediates/javac/")
+
 check.dependsOn 'checkstyle', 'findbugs', 'pmd'
+
+android {
+  lintOptions {
+    lintConfig file("$qualityConfigDir/lint/rules-lint.xml")
+    htmlOutput file("$reportsDir/lint/lint.html")
+    warningsAsErrors true
+    xmlReport false
+  }
+}
 
 task checkstyle(type: Checkstyle,
     group: 'Verification',
     description: 'Runs code style checks') {
 
-  configFile file("$qualityConfigDir/checkstyle/square_checks.xml")
-  source 'src'
-  include '**/*.java'
+  configFile file("$qualityConfigDir/checkstyle/simple_checks.xml")
+  source sourceDir
 
   reports {
-    xml.enabled = true
-    xml {
-      destination "$reportsDir/checkstyle/checkstyle.xml"
-    }
+    xml.enabled false
+    html.enabled true
+    html.destination file("$reportsDir/checkstyle/checkstyle.html")
   }
 
   classpath = files()
@@ -44,54 +41,40 @@ task checkstyle(type: Checkstyle,
 
 task findbugs(type: FindBugs,
     group: 'Verification',
-    description: 'Inspect java bytecode for bugs',
-    dependsOn: ['compileDebugSources', 'compileReleaseSources']) {
+    description: 'Inspect java bytecode for bugs') {
+
+  excludeFilter file("$qualityConfigDir/findbugs/android-exclude-filter.xml")
+  source sourceDir
+  classes = classesDir
 
   ignoreFailures = false
   effort = "max"
   reportLevel = "high"
-  excludeFilter = new File("$qualityConfigDir/findbugs/android-exclude-filter.xml")
-  classes = files("$project.rootDir/app/build/intermediates/classes")
-
-  source 'src'
-  include '**/*.java'
-  exclude '**/gen/**'
 
   reports {
-    xml.enabled = true
-    html.enabled = false
-    xml {
-      destination "$reportsDir/findbugs/findbugs.xml"
-    }
-    html {
-      destination "$reportsDir/findbugs/findbugs.html"
-    }
+    xml.enabled false
+    html.enabled true
+    html.destination file("$reportsDir/findbugs/findbugs.html")
   }
 
   classpath = files()
 }
-
 
 task pmd(type: Pmd,
     group: 'Verification',
     description: 'Inspect sourcecode for bugs') {
 
   ruleSetFiles = files("$qualityConfigDir/pmd/pmd-ruleset.xml")
-  ignoreFailures = false
-  ruleSets = []
+  source sourceDir
 
-  source 'src'
-  include '**/*.java'
-  exclude '**/gen/**'
+  ignoreFailures = false
+  ruleSets = [] // https://stackoverflow.com/questions/32247190/pmd-exclude-pattern-with-gradle
 
   reports {
-    xml.enabled = true
-    html.enabled = true
-    xml {
-      destination "$reportsDir/pmd/pmd.xml"
-    }
-    html {
-      destination "$reportsDir/pmd/pmd.html"
-    }
+    xml.enabled false
+    html.enabled true
+    html.destination file("$reportsDir/pmd/pmd.html")
   }
+
+  classpath = files()
 }

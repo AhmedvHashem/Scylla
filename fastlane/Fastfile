@@ -22,7 +22,7 @@ platform :android do
   lane :buildDebug do
     begin
       gradle(task: "clean assemble", build_type: "Debug")
-      on_success("Debug build Succeeded!")
+      # on_success("Debug build Succeeded!")
     rescue => exception
       on_error(exception)
     end
@@ -32,7 +32,128 @@ platform :android do
   lane :buildRelease do
     begin
       gradle(task: "clean assemble", build_type: "Release")
-      on_success("Release build Succeeded!")
+      # on_success("Release build Succeeded!")
+    rescue => exception
+      on_error(exception)
+    end
+  end
+
+  desc "Deploy to github releases"
+  lane :deploy_to_github do |options|
+    repo = "AhmedNTS/Scylla"
+    assets = Dir[options[:release_dir]]
+    puts assets
+
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
+    git_author_info = "#{git_author} (#{git_author_email})"
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
+    git_commit_hash_short = commit[:abbreviated_commit_hash]
+
+    # git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    # git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    # git_commit_hash = ENV["TRAVIS_COMMIT"]
+
+    build_url = ENV["TRAVIS_BUILD_WEB_URL"]
+    install_url = "https://github.com/#{repo}/releases/tag/#{git_tag}"
+
+    buildDir = ENV["TRAVIS_BUILD_DIR"]
+    app_icon = "#{buildDir}/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    puts app_icon
+
+    if git_tag
+      begin
+        github_release = set_github_release(
+          repository_name: repo,
+          api_token: options[:api_token],
+          name: git_tag,
+          tag_name: git_tag,
+          commitish: git_commit_hash,
+          description: "No changelog provided",
+          upload_assets: assets
+        )
+        puts github_release
+
+        slack(
+          slack_url: ENV["SLACK_WEBHOOK_URL"],
+          pretext: "Deploy to github releases Succeeded!",
+          message: git_commit_msg,
+          success: true,
+          # use_webhook_configured_username_and_icon: false,
+          # icon_url: app_icon,
+          default_payloads: [],
+          payload: {
+            "Git Author" => git_author_info,
+            "Git Branch" => git_branch,
+            "Git Tag" => git_tag,
+            "Git Commit Hash" => git_commit_hash
+          },
+          attachment_properties: {
+            "actions": [
+              {
+                "type": "button",
+                "text": "View Build",
+                "style": "primary",
+                "url": build_url
+              }, 
+              {
+                "type": "button",
+                "text": "Install Build",
+                "url": install_url
+              }
+            ]
+          }
+        )
+      rescue => exception
+        on_error(exception)
+      end
+    end
+  end
+
+  desc "Deploy to S3"
+  lane :deploy_to_s3 do |options|
+    s3_access_key = options[:s3_access_key]
+    s3_secret_access_key = options[:s3_secret_access_key]
+
+    apk_file_path = Dir[options[:apk_file_path]].at(0)
+    puts apk_file_path
+    file_name = File.basename(apk_file_path, ".*")
+    puts file_name
+
+    begin
+      aws_s3(
+        access_key: s3_access_key,
+        secret_access_key: s3_secret_access_key,
+        bucket: 'android-builds',
+        region: 'us-east-1',
+        # acl: ENV['S3_ACL'],                             # Optional - defaults to 'public-read'
+
+        apk: apk_file_path,
+      
+         app_directory: file_name,                # Optional but nice if you want to put multiple apps in same bucket
+      
+        upload_metadata: true,                          # Upload version.json, plist and HTML. Set to false to skip uploading of these files.
+        # version_file_name: 'app_version.json',          # Name of the file to upload to S3. Defaults to 'version.json'
+        # version_template_path: 'path/to/erb'            # Path to an ERB to configure the structure of the version JSON file
+      )
+      
+      slack(
+        slack_url: ENV["SLACK_WEBHOOK_URL"],
+        message: "Build successfully uploaded to S3!",
+        success: true,
+        default_payloads: [:git_branch, :last_git_tag, :git_author, :last_git_commit_message, :last_git_commit_hash],
+        attachment_properties: {
+        "actions": [{
+        "type": "button",
+        "text": "View Build",
+        "style": "primary",
+        "url": "https://android-builds.s3.amazonaws.com/#{file_name}/index.html"
+        }]
+        }
+      )
     rescue => exception
       on_error(exception)
     end
@@ -41,18 +162,81 @@ platform :android do
 end
 
 def on_success(success_message)
+    puts success_message
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
+    git_author_info = "#{git_author} (#{git_author_email})"
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
+
+    # git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    # git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    # git_commit_hash = ENV["TRAVIS_COMMIT"]
+
+    build_url = ENV["TRAVIS_BUILD_WEB_URL"]
+
     slack(
-       message: success_message,
-       success: true,
-       slack_url: ENV["SLACK_WEBHOOK_URL"]
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      pretext: success_message,
+      message: git_commit_msg,
+      success: true,
+      default_payloads: [],
+      payload: {
+        "Git Author" => git_author_info,
+        "Git Branch" => git_branch,
+        "Git Tag" => git_tag,
+        "Git Commit Hash" => git_commit_hash
+      },
+      attachment_properties: {
+        "actions": [
+          {
+            "type": "button",
+            "text": "View Build",
+            "style": "primary",
+            "url": build_url
+          }
+        ]
+      }
     )
 end
 
 def on_error(exception)
+    puts exception
+    commit = last_git_commit
+    git_author = commit[:author]
+    git_author_email = commit[:author_email]
+    git_author_info = "#{git_author} (#{git_author_email})"
+    git_commit_msg = commit[:message]
+    git_commit_hash = commit[:commit_hash]
+
+    # git_branch = ENV["TRAVIS_BRANCH"]
+    git_tag = ENV["TRAVIS_TAG"]
+    # git_commit_msg = ENV["TRAVIS_COMMIT_MESSAGE"]
+    # git_commit_hash = ENV["TRAVIS_COMMIT"]
+
     slack(
-       message: "Something went wrong! check *Error Info* for more details.",
-       success: false,
        slack_url: ENV["SLACK_WEBHOOK_URL"],
-       payload: { "Error Info" => exception.to_s }
+       pretext: exception.to_s,
+       message: git_commit_msg,
+       success: false,
+       default_payloads: [],
+       payload: {
+        "Git Author" => git_author_info,
+        "Git Branch" => git_branch,
+        "Git Tag" => git_tag,
+        "Git Commit Hash" => git_commit_hash
+      },
+      attachment_properties: {
+        "actions": [
+          {
+            "type": "button",
+            "text": "View Build",
+            "style": "danger",
+            "url": build_url
+          }
+        ]
+      }
     )
 end
