@@ -25,25 +25,17 @@ class MyApplication : Application() {
     super.onCreate()
     setStrictMode()
 
-    //if (LeakCanary.isInAnalyzerProcess(this)) {
-    //  // This process is dedicated to LeakCanary for heap analysis.
-    //  // You should not init your app in this process.
-    //  return;
-    //}
-    //
-    //LeakCanary.install(this);
-
     Timber.plant(Timber.DebugTree())
   }
 
   private fun setStrictMode() {
     if (BuildConfig.DEBUG) {
       StrictMode.setThreadPolicy(
-        StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork()   // or .detectAll() for all detectable problems
-          .penaltyLog().build()
+          StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork()   // or .detectAll() for all detectable problems
+              .penaltyLog().build()
       )
       StrictMode.setVmPolicy(
-        StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects().penaltyLog().penaltyDeath().build()
+          StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects().penaltyLog().penaltyDeath().build()
       )
     }
   }
