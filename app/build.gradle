@@ -52,7 +52,7 @@ android {
     }
     release {
       minifyEnabled true
-      shrinkResources true
+      shrinkResources false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
       signingConfig signingConfigs.releaseConfig
@@ -71,6 +71,8 @@ android {
     abortOnError false
     warning 'InvalidPackage'
   }
+
+  dynamicFeatures = [":dynamicfeature"]
 
   applicationVariants.all { variant ->
     variant.outputs.all {
