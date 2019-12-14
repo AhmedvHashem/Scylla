@@ -22,7 +22,11 @@ class MainActivity : AppCompatActivity() {
     recyclerView.adapter = adapter
     recyclerView.setHasFixedSize(false)
 
-    val items = mutableListOf<ICellViewModel<*, *>>()
+    val items = mutableListOf<ICellViewModel>()
+    items.add(UserViewModel(UserCell()))
+    items.add(PostViewModel(PostCell()))
+    items.add(PostViewModel(PostCell()))
+    items.add(PostViewModel(PostCell()))
     items.add(UserViewModel(UserCell()))
     items.add(PostViewModel(PostCell()))
 
@@ -40,43 +44,35 @@ class PostCell : ICell
 class UserCellViewHolder(view: View) : RecyclerView.ViewHolder(view)
 class PostCellViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-interface ICellViewModel<DATA : ICell, VIEW : RecyclerView.ViewHolder> {
+interface ICellViewModel {
   val type: Int
 
-  val data: DATA
-
-  fun bind(view: VIEW)
+  fun bind(view: RecyclerView.ViewHolder)
 }
 
-class UserViewModel(private val item: UserCell) : ICellViewModel<UserCell, UserCellViewHolder> {
+class UserViewModel(private val item: UserCell) : ICellViewModel {
   override val type: Int
     get() = USER_CELL
 
-  override val data: UserCell
-    get() = item
-
-  override fun bind(view: UserCellViewHolder) {
+  override fun bind(view: RecyclerView.ViewHolder) {
   }
 }
 
-class PostViewModel(private val item: PostCell) : ICellViewModel<PostCell, PostCellViewHolder> {
+class PostViewModel(private val item: PostCell) : ICellViewModel {
   override val type: Int
-    get() = USER_CELL
+    get() = POST_CELL
 
-  override val data: PostCell
-    get() = item
-
-  override fun bind(view: PostCellViewHolder) {
+  override fun bind(view: RecyclerView.ViewHolder) {
 
   }
 }
 
-class RecyclerViewAdapter : ListAdapter<ICellViewModel<ICell, RecyclerView.ViewHolder>, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<ICellViewModel<ICell, RecyclerView.ViewHolder>>() {
-  override fun areItemsTheSame(oldItem: ICellViewModel<ICell, RecyclerView.ViewHolder>, newItem: ICellViewModel<ICell, RecyclerView.ViewHolder>): Boolean {
+class RecyclerViewAdapter : ListAdapter<ICellViewModel, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<ICellViewModel>() {
+  override fun areItemsTheSame(oldItem: ICellViewModel, newItem: ICellViewModel): Boolean {
     return true
   }
 
-  override fun areContentsTheSame(oldItem: ICellViewModel<ICell, RecyclerView.ViewHolder>, newItem: ICellViewModel<ICell, RecyclerView.ViewHolder>): Boolean {
+  override fun areContentsTheSame(oldItem: ICellViewModel, newItem: ICellViewModel): Boolean {
     return true
   }
 
