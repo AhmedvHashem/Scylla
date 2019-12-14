@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
   }
 }
 
-const val USER_CELL = 1000
-const val POST_CELL = 2000
-
 interface ICell
 class UserCell : ICell
 class PostCell : ICell
@@ -52,7 +49,7 @@ interface ICellViewModel {
 
 class UserViewModel(private val item: UserCell) : ICellViewModel {
   override val type: Int
-    get() = USER_CELL
+    get() = R.layout.item_user_cell
 
   override fun bind(view: RecyclerView.ViewHolder) {
   }
@@ -60,7 +57,7 @@ class UserViewModel(private val item: UserCell) : ICellViewModel {
 
 class PostViewModel(private val item: PostCell) : ICellViewModel {
   override val type: Int
-    get() = POST_CELL
+    get() = R.layout.item_post_cell
 
   override fun bind(view: RecyclerView.ViewHolder) {
 
@@ -86,11 +83,11 @@ class RecyclerViewAdapter : ListAdapter<ICellViewModel, RecyclerView.ViewHolder>
     val inflater = LayoutInflater.from(parent.context)
 
     return when (viewType) {
-      USER_CELL -> {
+      R.layout.item_user_cell -> {
         val view = inflater.inflate(R.layout.item_user_cell, parent, false)
         UserCellViewHolder(view)
       }
-      POST_CELL -> {
+      R.layout.item_post_cell -> {
         val view = inflater.inflate(R.layout.item_post_cell, parent, false)
         PostCellViewHolder(view)
       }
