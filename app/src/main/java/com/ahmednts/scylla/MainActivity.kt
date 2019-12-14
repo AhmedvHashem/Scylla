@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,54 +23,55 @@ class MainActivity : AppCompatActivity() {
     recyclerView.adapter = adapter
     recyclerView.setHasFixedSize(false)
 
-    val items = mutableListOf<ICellViewModel>()
-    items.add(UserViewModel(UserCell()))
-    items.add(PostViewModel(PostCell()))
-    items.add(PostViewModel(PostCell()))
-    items.add(PostViewModel(PostCell()))
-    items.add(UserViewModel(UserCell()))
-    items.add(PostViewModel(PostCell()))
+    val items = mutableListOf<ICell>()
+    items.add((UserCell()))
+    items.add((PostCell()))
+    items.add((PostCell()))
+    items.add((PostCell()))
+    items.add((UserCell()))
+    items.add((PostCell()))
 
     adapter.submitList(items)
   }
 }
 
-interface ICell
-class UserCell : ICell
-class PostCell : ICell
-
-class UserCellViewHolder(view: View) : RecyclerView.ViewHolder(view)
-class PostCellViewHolder(view: View) : RecyclerView.ViewHolder(view)
-
-interface ICellViewModel {
-  val type: Int
-
-  fun bind(view: RecyclerView.ViewHolder)
+abstract class ICell {
+  @get:LayoutRes
+  abstract val type: Int
 }
 
-class UserViewModel(private val item: UserCell) : ICellViewModel {
+class UserCell : ICell() {
   override val type: Int
     get() = R.layout.item_user_cell
-
-  override fun bind(view: RecyclerView.ViewHolder) {
-  }
 }
 
-class PostViewModel(private val item: PostCell) : ICellViewModel {
+class PostCell : ICell() {
   override val type: Int
     get() = R.layout.item_post_cell
+}
 
-  override fun bind(view: RecyclerView.ViewHolder) {
+abstract class ICellViewHolder<DATA>(view: View) : RecyclerView.ViewHolder(view) {
+  abstract fun bind(item: DATA)
+}
+
+class UserCellViewHolder(view: View) : ICellViewHolder<ICell>(view) {
+  override fun bind(item: ICell) {
 
   }
 }
 
-class RecyclerViewAdapter : ListAdapter<ICellViewModel, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<ICellViewModel>() {
-  override fun areItemsTheSame(oldItem: ICellViewModel, newItem: ICellViewModel): Boolean {
+class PostCellViewHolder(view: View) : ICellViewHolder<ICell>(view) {
+  override fun bind(item: ICell) {
+
+  }
+}
+
+class RecyclerViewAdapter : ListAdapter<ICell, ICellViewHolder<ICell>>(object : DiffUtil.ItemCallback<ICell>() {
+  override fun areItemsTheSame(oldItem: ICell, newItem: ICell): Boolean {
     return true
   }
 
-  override fun areContentsTheSame(oldItem: ICellViewModel, newItem: ICellViewModel): Boolean {
+  override fun areContentsTheSame(oldItem: ICell, newItem: ICell): Boolean {
     return true
   }
 
@@ -79,7 +81,7 @@ class RecyclerViewAdapter : ListAdapter<ICellViewModel, RecyclerView.ViewHolder>
     return getItem(position).type
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ICellViewHolder<ICell> {
     val inflater = LayoutInflater.from(parent.context)
 
     return when (viewType) {
@@ -95,7 +97,7 @@ class RecyclerViewAdapter : ListAdapter<ICellViewModel, RecyclerView.ViewHolder>
     }
   }
 
-  override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-    getItem(position).bind(holder)
+  override fun onBindViewHolder(holder: ICellViewHolder<ICell>, position: Int) {
+    holder.bind(getItem(position))
   }
 }
