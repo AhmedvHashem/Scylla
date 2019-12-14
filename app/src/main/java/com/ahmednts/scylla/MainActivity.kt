@@ -56,12 +56,14 @@ abstract class ICellViewHolder<DATA>(view: View) : RecyclerView.ViewHolder(view)
 
 class UserCellViewHolder(view: View) : ICellViewHolder<ICell>(view) {
   override fun bind(item: ICell) {
+    val item = item as UserCell
 
   }
 }
 
 class PostCellViewHolder(view: View) : ICellViewHolder<ICell>(view) {
   override fun bind(item: ICell) {
+    val item = item as PostCell
 
   }
 }
