@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.vivantor.dynamicfeature">
@@ -8,7 +9,17 @@
     <dist:delivery>
       <dist:install-time />
     </dist:delivery>
+
     <dist:fusing dist:include="false" />
   </dist:module>
-</manifest>
 
+  <application>
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/title_activity_main"
+        android:theme="@style/AppTheme.NoActionBar">
+
+    </activity>
+  </application>
+
+</manifest>
