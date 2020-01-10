@@ -35,19 +35,23 @@ class MainActivity : AppCompatActivity() {
   }
 }
 
+enum class CellType(@get:LayoutRes val type: Int) {
+  USER(R.layout.item_user_cell),
+  POST(R.layout.item_user_cell)
+}
+
 abstract class ICell {
-  @get:LayoutRes
-  abstract val type: Int
+  abstract val type: CellType
 }
 
 class UserCell : ICell() {
-  override val type: Int
-    get() = R.layout.item_user_cell
+  override val type: CellType
+    get() = CellType.USER
 }
 
 class PostCell : ICell() {
-  override val type: Int
-    get() = R.layout.item_post_cell
+  override val type: CellType
+    get() = CellType.POST
 }
 
 abstract class ICellViewHolder<DATA>(view: View) : RecyclerView.ViewHolder(view) {
@@ -80,18 +84,18 @@ class RecyclerViewAdapter : ListAdapter<ICell, ICellViewHolder<ICell>>(object : 
 }) {
 
   override fun getItemViewType(position: Int): Int {
-    return getItem(position).type
+    return getItem(position).type.type
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ICellViewHolder<ICell> {
     val inflater = LayoutInflater.from(parent.context)
 
     return when (viewType) {
-      R.layout.item_user_cell -> {
+      CellType.USER.type -> {
         val view = inflater.inflate(R.layout.item_user_cell, parent, false)
         UserCellViewHolder(view)
       }
-      R.layout.item_post_cell -> {
+      CellType.POST.type -> {
         val view = inflater.inflate(R.layout.item_post_cell, parent, false)
         PostCellViewHolder(view)
       }
