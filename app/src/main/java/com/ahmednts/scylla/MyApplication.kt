@@ -2,7 +2,7 @@ package com.ahmednts.scylla
 
 import android.app.Application
 import android.os.StrictMode
-import timber.log.Timber
+import com.ahmednts.scylla.utils.AppLogger
 
 /**
  * Created by AhmedNTS on 7/29/2017.
@@ -25,7 +25,7 @@ class MyApplication : Application() {
     super.onCreate()
     setStrictMode()
 
-    Timber.plant(Timber.DebugTree())
+    AppLogger.setup()
   }
 
   private fun setStrictMode() {
