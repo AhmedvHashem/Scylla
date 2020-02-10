@@ -35,6 +35,10 @@ object AppLogger : Logger {
       Timber.plant(DebugTree())
   }
 
+  fun setupForTests() {
+    Timber.plant(TestTree())
+  }
+
   override fun v(message: String, vararg args: Any?) {
     Timber.v(message, *args)
   }
@@ -119,9 +123,36 @@ private class DebugTree : Timber.DebugTree() {
     }
     tag = tag.substring(tag.lastIndexOf('.') + 1)
     // Tag length limit was removed in API 24.
-    return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-      tag
-    } else tag.substring(0, MAX_TAG_LENGTH)
+    return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) tag
+    else tag.substring(0, MAX_TAG_LENGTH)
+  }
+}
+
+private class TestTree : Timber.DebugTree() {
+  companion object {
+    private const val MAX_TAG_LENGTH = 23
+    private const val CALL_STACK_INDEX = 7
+    private val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
+  }
+
+  override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+    print("${createClassTag()} $message")
+  }
+
+  private fun createClassTag(): String {
+    val stackTrace = Throwable().stackTrace
+    if (stackTrace.size <= CALL_STACK_INDEX) {
+      throw IllegalStateException("Synthetic stacktrace didn't have enough elements: are you using proguard?")
+    }
+    var tag = stackTrace[CALL_STACK_INDEX].className
+    val m = ANONYMOUS_CLASS.matcher(tag)
+    if (m.find()) {
+      tag = m.replaceAll("")
+    }
+    tag = tag.substring(tag.lastIndexOf('.') + 1).substringBefore('$')
+    // Tag length limit was removed in API 24.
+    return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) tag
+    else tag.substring(0, MAX_TAG_LENGTH)
   }
 }
 
