@@ -3,7 +3,6 @@ package com.ahmednts.scylla
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ahmednts.scylla.utils.AppLogger
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,16 +12,5 @@ class MainActivity : AppCompatActivity() {
 
     AppLogger.e(Exception())
     AppLogger.d("asdasdlakshd ashdk ")
-    AppLogger.d("asdasdlakshd ashdk ")
-    AppLogger.d("asdasdlakshd ashdk ")
-
-    Hakona().pop()
   }
 }
-
-class Hakona {
-  fun pop() {
-    AppLogger.d("asdasdlakshd ashdk ")
-  }
-}
-
