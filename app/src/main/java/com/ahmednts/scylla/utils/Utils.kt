@@ -2,13 +2,11 @@ package com.ahmednts.scylla.utils
 
 import android.app.Activity
 import android.content.Context
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.ahmednts.scylla.MyApplication
 import kotlin.math.roundToInt
 
 /**
@@ -16,18 +14,6 @@ import kotlin.math.roundToInt
  */
 
 object Utils {
-
-  val appName: String
-    get() {
-      return try {
-        val pm = MyApplication.instance.packageManager
-        val pi = pm.getPackageInfo(MyApplication.instance.packageName, 0)
-        pi?.applicationInfo?.loadLabel(pm)?.toString() ?: "Logger"
-      } catch (e: PackageManager.NameNotFoundException) {
-        e.printStackTrace()
-        "Logger"
-      }
-    }
 
   fun dp2px(dp: Int): Int {
     val density = Resources.getSystem().displayMetrics.density

@@ -11,9 +11,9 @@ object DateTimeUtils {
 
   fun getUTCFromLocal(localISODate: String): String? {
     try {
-      val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+      val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
       dateFormat.timeZone = TimeZone.getDefault()
-      val localDate = dateFormat.parse(localISODate)
+      val localDate = dateFormat.parse(localISODate) ?: return null
       dateFormat.timeZone = TimeZone.getTimeZone("UTC")
       return dateFormat.format(localDate)
     } catch (e: Exception) {
@@ -24,9 +24,9 @@ object DateTimeUtils {
 
   fun getLocalFromUTC(utcISODate: String): String? {
     try {
-      val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+      val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
       dateFormat.timeZone = TimeZone.getTimeZone("UTC")
-      val utcDate = dateFormat.parse(utcISODate)
+      val utcDate = dateFormat.parse(utcISODate) ?: return null
       dateFormat.timeZone = TimeZone.getDefault()
       return dateFormat.format(utcDate)
     } catch (e: Exception) {
