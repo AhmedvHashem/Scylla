@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Scylla.iml" filepath="$PROJECT_DIR$/Scylla.iml" group="Scylla" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Scylla/app" />
-      <module fileurl="file://$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" filepath="$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" filepath="$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" group="Scylla/dynamicfeature" />
     </modules>
   </component>
 </project>
