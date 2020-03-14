@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Scylla.iml" filepath="$PROJECT_DIR$/Scylla.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Scylla.iml" filepath="$PROJECT_DIR$/Scylla.iml" group="Scylla" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Scylla/app" />
       <module fileurl="file://$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" filepath="$PROJECT_DIR$/dynamicfeature/dynamicfeature.iml" />
     </modules>
   </component>

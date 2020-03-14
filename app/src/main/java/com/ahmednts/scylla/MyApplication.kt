@@ -2,7 +2,9 @@ package com.ahmednts.scylla
 
 import android.app.Application
 import android.os.StrictMode
-import timber.log.Timber
+import com.ahmednts.scylla.utils.AppLogger
+import io.reactivex.internal.functions.Functions
+import io.reactivex.plugins.RxJavaPlugins
 
 /**
  * Created by AhmedNTS on 7/29/2017.
@@ -25,7 +27,8 @@ class MyApplication : Application() {
     super.onCreate()
     setStrictMode()
 
-    Timber.plant(Timber.DebugTree())
+    AppLogger.setup()
+    RxJavaPlugins.setErrorHandler(Functions.emptyConsumer())
   }
 
   private fun setStrictMode() {
