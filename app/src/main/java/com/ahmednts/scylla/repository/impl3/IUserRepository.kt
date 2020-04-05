@@ -4,14 +4,14 @@ import io.reactivex.Flowable
 
 class User
 
-interface IUserRepository {
+interface UserRepository {
 
   fun getUser(userId: String): Flowable<User>
 
   fun setUser(user: User)
 }
 
-class DefaultUserRepo(retrofit: String, db: String) : IUserRepository {
+class DefaultUserRepo(retrofit: String, db: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
     TODO("not implemented")
@@ -22,7 +22,7 @@ class DefaultUserRepo(retrofit: String, db: String) : IUserRepository {
   }
 }
 
-class RemoteUserRepo(retrofit: String) : IUserRepository {
+class RemoteUserRepo(retrofit: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
     TODO("not implemented")
@@ -34,7 +34,7 @@ class RemoteUserRepo(retrofit: String) : IUserRepository {
   }
 }
 
-class LocalUserRepo(db: String) : IUserRepository {
+class LocalUserRepo(db: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
     TODO("not implemented")
@@ -45,11 +45,11 @@ class LocalUserRepo(db: String) : IUserRepository {
   }
 }
 
-class GetUserUseCase(private val repository: IUserRepository) {
+class GetUserUseCase(private val repository: UserRepository) {
   fun getUser(userId: String) = repository.getUser(userId)
 }
 
-class SetUserUseCase(private val repository: IUserRepository) {
+class SetUserUseCase(private val repository: UserRepository) {
   fun setUser(user: User) = repository.setUser(user)
 }
 
