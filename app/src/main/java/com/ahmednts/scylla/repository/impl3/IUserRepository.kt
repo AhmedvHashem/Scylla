@@ -14,18 +14,18 @@ interface UserRepository {
 class DefaultUserRepo(retrofit: String, db: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   override fun setUser(user: User) {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 }
 
 class RemoteUserRepo(retrofit: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   //useless
@@ -37,11 +37,11 @@ class RemoteUserRepo(retrofit: String) : UserRepository {
 class LocalUserRepo(db: String) : UserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   override fun setUser(user: User) {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 }
 

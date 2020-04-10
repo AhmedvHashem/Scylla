@@ -15,24 +15,33 @@ interface IUserRepository {
   fun getLocalUser(userId: String): User
 
   fun setUser(user: User)
+
+  //no need for this
+  //  fun setRemoteUser(user: User)
+
+  fun setLocalUser(user: User)
 }
 
 class DefaultUserRepo(retrofit: String, db: String) : IUserRepository {
 
   override fun getUser(userId: String): Flowable<User> {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   override fun getRemoteUser(userId: String): User {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   override fun getLocalUser(userId: String): User {
-    TODO("not implemented")
+    TODO("Implementation goes here")
   }
 
   override fun setUser(user: User) {
-    TODO("not implemented")
+    TODO("Implementation goes here")
+  }
+
+  override fun setLocalUser(user: User) {
+    TODO("Implementation goes here")
   }
 }
 
@@ -44,6 +53,7 @@ class GetUserUseCase(private val repository: IUserRepository) {
 
 class SetUserUseCase(private val repository: IUserRepository) {
   fun setUser(user: User) = repository.setUser(user)
+  fun setLocalUser(user: User) = repository.setLocalUser(user)
 }
 
 fun main() {
@@ -58,4 +68,5 @@ fun main() {
   GetUserUseCase(repo).getRemoteUser("")
 
   SetUserUseCase(repo).setUser(User())
+  SetUserUseCase(repo).setLocalUser(User())
 }
