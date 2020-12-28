@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
 enum class CellType(@get:LayoutRes val type: Int) {
   USER(R.layout.item_user_cell),
-  POST(R.layout.item_user_cell)
+  POST(R.layout.item_post_cell)
 }
 
 abstract class ICell {
@@ -92,11 +92,11 @@ class RecyclerViewAdapter : ListAdapter<ICell, ICellViewHolder<ICell>>(object : 
 
     return when (viewType) {
       CellType.USER.type -> {
-        val view = inflater.inflate(R.layout.item_user_cell, parent, false)
+        val view = inflater.inflate(viewType, parent, false)
         UserCellViewHolder(view)
       }
       CellType.POST.type -> {
-        val view = inflater.inflate(R.layout.item_post_cell, parent, false)
+        val view = inflater.inflate(viewType, parent, false)
         PostCellViewHolder(view)
       }
       else -> throw NullPointerException("o.O")
