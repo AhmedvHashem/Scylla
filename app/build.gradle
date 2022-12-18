@@ -66,8 +66,9 @@ android {
   kotlinOptions {
     jvmTarget = "1.8"
   }
+    namespace 'com.ahmednts.scylla'
 
-  lintOptions {
+    lintOptions {
     abortOnError false
     warning 'InvalidPackage'
   }
