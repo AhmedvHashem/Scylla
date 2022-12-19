@@ -1,19 +1,14 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+
     id 'application'
-    id 'org.jetbrains.kotlin.jvm' version '1.2.51'
 }
 
+group = 'com.hashem'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'AppKt'
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-}
-
 repositories {
-    jcenter()
     mavenCentral()
 }
 
@@ -22,4 +17,16 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'AppKt'
+//    mainClassName = 'App'
 }
