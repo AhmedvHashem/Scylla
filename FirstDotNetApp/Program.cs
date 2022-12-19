@@ -7,6 +7,10 @@ namespace FirstDotNetApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World! C# Program");
+            while (Console.ReadLine() != "")
+            {
+                Console.WriteLine("Hi");
+            }
         }
     }
 }
