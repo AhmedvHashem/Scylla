@@ -2,10 +2,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch App",
+      "name": "Launch Java",
       "request": "launch",
       "mainClass": "App",
-      "projectName": "FirstJavaKotlinGradleApp"
+      "projectName": "FirstJavaKotlinApp"
     }
   ]
 }
