@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
-    <StartupObject>FirstDotNetApp.App</StartupObject>
+    <StartupObject>FirstDotNetApp.Program</StartupObject>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
