@@ -42,6 +42,5 @@ def minCntFoun(a):
 
 # Driver code
 if __name__ == '__main__':
-
     a = [1, 2, 1]
     print(minCntFoun(a))
