@@ -6,11 +6,9 @@ val lazyValue: String by lazy {
 }
 
 class User {
-    var name: String by Delegates.observable("<no name>") { prop, old, new ->
-        println("$old -> $new")
-    }
+    var name: String by
+            Delegates.observable("<no name>") { prop, old, new -> println("$old -> $new") }
 }
-
 
 fun main(args: Array<String>) {
     println("Hello World! Kotlin")
