@@ -12,21 +12,18 @@ repositories {
     mavenCentral()
 }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = "11"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "11"
-}
-
 dependencies {
 }
 
-test {
-    useJUnitPlatform()
+kotlin {
+    jvmToolchain(8)
 }
 
 application {
     mainClassName = 'ProgramKt'
 //    mainClassName = 'Program'
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -1,7 +1,6 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "1.8.0"
+    java
     application
 }
 
@@ -12,20 +11,16 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-kotlin {
-    kotlin
-}
-
 application {
     mainClass.set("MainKt")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+kotlin {
+     jvmToolchain(8)
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
 }
 
 tasks.test {
