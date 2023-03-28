@@ -11,5 +11,12 @@ class User {
 }
 
 fun main(args: Array<String>) {
+    lazyValue
     println("Hello World! Kotlin")
+
+    val myName = "Hashem"
+    mutableListOf<String>().forEach {
+        val i = it.length
+        println(i)
+    }
 }
