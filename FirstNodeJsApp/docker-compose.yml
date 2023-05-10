@@ -5,6 +5,10 @@ services:
     image: "ahmedvhashem/first-node-app:1.0"
     ports:
       - "8080:8080"
+  webserver:
+    image: "nginx:alpine"
+    ports:
+      - "80:80"
   db:
     image: "mysql"
     environment:
