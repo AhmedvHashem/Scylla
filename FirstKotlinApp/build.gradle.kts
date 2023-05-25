@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "1.8.21"
     java
     application
 }
@@ -12,17 +12,18 @@ repositories {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("Main")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 kotlin {
-     jvmToolchain(8)
+     jvmToolchain(17)
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-}
 
-tasks.test {
-    useJUnitPlatform()
 }
