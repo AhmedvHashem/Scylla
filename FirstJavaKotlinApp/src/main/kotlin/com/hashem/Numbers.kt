@@ -45,7 +45,7 @@ fun reverse(number: Int): Int {
     do {
         remainder = number % 10
         reverse = reverse * 10 + remainder
-        number = number / 10
+        number /= 10
     } while (number > 0)
     return reverse
 }
