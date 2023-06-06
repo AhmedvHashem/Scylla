@@ -11,7 +11,7 @@ public class Sorting {
         }
         System.out.println("\n----------------Before");
 
-        bubbleSort(unsortedList, n);
+        selectionSort(unsortedList, n);
 
         System.out.println("\n----------------After");
         for (int i : unsortedList)
@@ -19,7 +19,6 @@ public class Sorting {
     }
 
     private static void selectionSort(int[] a, int n) {
-
         for (int i = 0; i < n; i++) {
             int min_index = i;
             for (int j = i; j < n; j++) {
