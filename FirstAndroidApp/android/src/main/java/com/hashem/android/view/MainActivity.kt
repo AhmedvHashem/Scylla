@@ -31,6 +31,5 @@ class MainActivity : AppCompatActivity() {
         Bundle().apply {
             putString("key", "value")
         }
-
     }
 }
