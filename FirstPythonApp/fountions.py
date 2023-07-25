@@ -1,5 +1,4 @@
 def minCntFoun(a):
-
     # dp[i]: Stores the position of
     # rightmost fountain that can
     # be covered by water of leftmost
@@ -13,8 +12,7 @@ def minCntFoun(a):
     for i in range(N):
         idxLeft = max(i - a[i], 0)
         idxRight = min(i + (a[i] + 1), N)
-        dp[idxLeft] = max(dp[idxLeft],
-                          idxRight)
+        dp[idxLeft] = max(dp[idxLeft], idxRight)
 
     # Stores count of fountains
     # needed to be activated
@@ -28,12 +26,11 @@ def minCntFoun(a):
 
     # Traverse dp[] array
     for i in range(N):
-        idxNext = max(idxNext,
-                      dp[i])
+        idxNext = max(idxNext, dp[i])
 
         # If left most fountain
         # cover all its range
-        if (i == idxRight):
+        if i == idxRight:
             cntfount += 1
             idxRight = idxNext
 
@@ -41,6 +38,6 @@ def minCntFoun(a):
 
 
 # Driver code
-if __name__ == '__main__':
+if __name__ == "__main__":
     a = [1, 2, 1]
     print(minCntFoun(a))
