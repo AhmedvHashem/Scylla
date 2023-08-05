@@ -90,5 +90,4 @@ cmake-build-debug
 # idea
 .idea
 
-build
 .DS_Store
