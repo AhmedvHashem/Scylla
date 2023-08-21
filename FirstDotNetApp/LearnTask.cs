@@ -11,6 +11,13 @@ public static class LearnTask
         {
             Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
             Console.WriteLine("Task");
+
+            var t2 = Task.Run(() =>
+            {
+                Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
+                Console.WriteLine("Task2");
+            });
+            t2.Wait();
         });
 
         Console.WriteLine("Main before wait");
