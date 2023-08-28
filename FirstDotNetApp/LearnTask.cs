@@ -7,17 +7,37 @@ public static class LearnTask
         Console.WriteLine("Hello World! C# Program");
         Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
 
-        var t = Task.Run(() =>
+        var t = Task.Run(async () =>
         {
             Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
             Console.WriteLine("Task");
 
-            var t2 = Task.Run(() =>
+            await Task.Run(async () =>
             {
+                await Task.Delay(1000);
                 Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
                 Console.WriteLine("Task2");
             });
-            t2.Wait();
+
+            await Task.Run(async () =>
+            {
+                await Task.Delay(500);
+                Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
+                Console.WriteLine("Task3");
+            });
+
+            Task.Run(async () =>
+            {
+                Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
+                Console.WriteLine("Task4");
+                Thread.Sleep(3000);
+            }).Wait();
+
+            Task.Run(async () =>
+            {
+                Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
+                Console.WriteLine("Task5");
+            }).Wait();
         });
 
         Console.WriteLine("Main before wait");
