@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from simple_history.models import HistoricalRecords
+
 
 class Member(models.Model):
     slug = models.SlugField(
@@ -9,6 +11,7 @@ class Member(models.Model):
     )
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    history = HistoricalRecords()
 
     def save(self, *args, **kwargs):
         if not self.slug:
