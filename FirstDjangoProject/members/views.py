@@ -10,6 +10,6 @@ def members(request):
     return HttpResponse(Member.objects.all().values())
 
 
-def details(request, id):
-    mymember = Member.objects.get(id=id)
-    return HttpResponse(mymember.slug)
+def details(request, slug):
+    mymember = Member.objects.get(slug=slug)
+    return HttpResponse(mymember.first_name)
