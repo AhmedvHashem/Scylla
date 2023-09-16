@@ -1,6 +1,7 @@
 from django.conf import settings
-settings.DEBUG = True
 from django.db import connection, reset_queries
+
+settings.DEBUG = True
 
 
 def num_queries(reset=True):
