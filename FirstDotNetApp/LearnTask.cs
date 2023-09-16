@@ -26,14 +26,14 @@ public static class LearnTask
                 Console.WriteLine("Task3");
             });
 
-            Task.Run(async () =>
+            Task.Run(() =>
             {
                 Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
                 Console.WriteLine("Task4");
                 Thread.Sleep(3000);
             }).Wait();
 
-            Task.Run(async () =>
+            Task.Run(() =>
             {
                 Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
                 Console.WriteLine("Task5");
