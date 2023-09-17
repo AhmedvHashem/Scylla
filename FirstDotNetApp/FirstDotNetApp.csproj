@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <StartupObject>FirstDotNetApp.LearnTask</StartupObject>
+    <StartupObject>FirstDotNetApp.Program</StartupObject>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
