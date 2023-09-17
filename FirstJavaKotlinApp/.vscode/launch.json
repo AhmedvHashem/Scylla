@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Numbers",
+            "request": "launch",
+            "mainClass": "com.hashem.Numbers",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "Program",
+            "request": "launch",
+            "mainClass": "com.hashem.Program",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "SOLID",
+            "request": "launch",
+            "mainClass": "com.hashem.SOLID",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "SingleThreadedServerProgram",
+            "request": "launch",
+            "mainClass": "com.hashem.SingleThreadedServerProgram",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "Sorting",
+            "request": "launch",
+            "mainClass": "com.hashem.Sorting",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "Strings",
+            "request": "launch",
+            "mainClass": "com.hashem.Strings",
+            "projectName": "FirstJavaKotlinApp"
+        },
+        {
+            "type": "java",
+            "name": "ThreadLockTest",
+            "request": "launch",
+            "mainClass": "com.hashem.ThreadLockTest",
+            "projectName": "FirstJavaKotlinApp"
+        }
+    ]
+}
