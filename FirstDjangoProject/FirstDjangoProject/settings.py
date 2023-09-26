@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "members.apps.MembersConfig",
+    "books.apps.BooksConfig",
+    "rest_framework",
     "simple_history",
 ]
 

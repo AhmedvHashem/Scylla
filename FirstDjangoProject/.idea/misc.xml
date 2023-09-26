@@ -3,9 +3,7 @@
   <component name="Black">
     <option name="enabledOnReformat" value="true" />
     <option name="enabledOnSave" value="true" />
-    <option name="executionMode" value="BINARY" />
-    <option name="pathToExecutable" value="C:\Program Files\Python\Scripts\black.exe" />
-    <option name="sdkName" value="Python 3.11 (FirstDjangoProject)" />
+    <option name="sdkUUID" value="4ce31a7a-9395-485c-b48b-8735279eb6bc" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (FirstDjangoProject)" project-jdk-type="Python SDK" />
   <component name="PyCharmProfessionalAdvertiser">

@@ -1,8 +1,9 @@
-from django.urls import path
+from rest_framework import routers
 
-from members import views
+from books.views import AuthorViewSet, BookViewSet
 
-urlpatterns = [
-    path("members/", views.members, name="members"),
-    path("members/<slug:slug>/", views.details, name="details"),
-]
+router = routers.DefaultRouter()
+router.register(r"authors", AuthorViewSet, basename="authors")
+router.register(r"books", BookViewSet, basename="books")
+
+urlpatterns = router.urls

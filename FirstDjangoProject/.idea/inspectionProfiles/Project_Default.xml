@@ -5,6 +5,8 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="members.models.Member.objects" />
+          <option value="books.models.Book.objects" />
+          <option value="books.models.Author.objects" />
         </list>
       </option>
     </inspection_tool>

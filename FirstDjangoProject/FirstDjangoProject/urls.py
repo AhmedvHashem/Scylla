@@ -20,7 +20,8 @@ from django.urls import include, path
 from FirstDjangoProject import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
     path("admin/", admin.site.urls),
+    path("", views.index, name="index"),
     path("", include("members.urls")),
+    path("", include("books.urls")),
 ]

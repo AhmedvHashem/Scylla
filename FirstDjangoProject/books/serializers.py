@@ -1,15 +1,19 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
+from books.models import Book, Author
 
-class UserSerializer(serializers.ModelSerializer):
+
+class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ["username", "email", "groups"]
-        # read_only_fields = ["username"]
+        model = Author
+        fields = ["first_name", "last_name"]
 
 
-class GroupSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
+    author_first_name = serializers.CharField(
+        source="author.first_name", read_only=True
+    )
+
     class Meta:
-        model = Group
-        fields = ["name"]
+        model = Book
+        fields = ["name", "description", "author", "author_first_name"]
