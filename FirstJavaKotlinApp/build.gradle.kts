@@ -1,6 +1,6 @@
 plugins {
     java
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.0"
 }
 
 group = "com.hashem"
@@ -16,7 +16,7 @@ kotlin {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
 }
 
 repositories {
