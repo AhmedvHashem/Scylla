@@ -25,8 +25,15 @@ class BookViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"], url_path="test_get")
     def test_get(self, request):
-        
-        return Response()
+        print("request.user")
+        print(request.user)
+        print("request.user")
+        books = Book.objects.filter(author__user_id=request.user.id)
+        serializer = BookSerializer(
+            books,
+            many=True,
+        )
+        return Response(serializer.data)
 
     @action(detail=False, methods=["post"], url_path="update")
     def list_update(self, request):
