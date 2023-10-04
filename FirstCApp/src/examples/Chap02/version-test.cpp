@@ -5,7 +5,8 @@
 #include <vector>
 using namespace std;
 
-int main( int argc, char ** argv ) {
+int main(int argc, char **argv)
+{
 	stringstream version;
 	version << "GCC version: "
 			<< __GNUC__ << "." << __GNUC_MINOR__ << "." << __GNUC_PATCHLEVEL__
@@ -13,11 +14,11 @@ int main( int argc, char ** argv ) {
 
 	cout << version.str() << endl;
 
-//	vector<string> v = { "one", "two", "three" }; // C++11 feature - initializer list
-//
-//	for( string s : v ) {	// C++11 feature - range-based for loop
-//		cout << s << endl;
-//	}
+	//	vector<string> v = { "one", "two", "three" }; // C++11 feature - initializer list
+	//
+	//	for( string s : v ) {	// C++11 feature - range-based for loop
+	//		cout << s << endl;
+	//	}
 
 	return 0;
 }
