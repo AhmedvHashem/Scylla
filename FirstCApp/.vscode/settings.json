@@ -53,6 +53,8 @@
     "xlocbuf": "cpp",
     "xlocmes": "cpp",
     "xlocmon": "cpp",
-    "xloctime": "cpp"
+    "xloctime": "cpp",
+    "corecrt_wstdio.h": "c",
+    "corecrt.h": "c"
   }
 }
