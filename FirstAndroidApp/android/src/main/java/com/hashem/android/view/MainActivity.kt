@@ -1,6 +1,7 @@
 package com.hashem.android.view
 
 import android.content.Intent
+import android.hardware.Sensor
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Sensor.TYPE_AMBIENT_TEMPERATURE
         MySingleton.getInstance {
             findViewById<TextView>(R.id.btn).text = "Hi from Singleton"
         }
