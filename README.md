@@ -6,3 +6,4 @@
 - 'first-framework' is for testing a specific language framework.
 - 'test' is for testing new libraries and ideas.
 - 'android' and a like nameing is for platform/language specific branches.
+- 'code' is for code I use in my projects.
