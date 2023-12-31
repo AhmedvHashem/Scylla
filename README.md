@@ -1,4 +1,4 @@
-# Master Branch to be Checkedout from when working on a new test
+# Scylla Experimentations Project
 
 ## Naming Conventions for branches are
 
