@@ -1,9 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "@/styles/Home.module.css";
+import { Inter } from "next/font/google";
+import memcached from "@/lib/memcached";
+import redis from "@/lib/redis";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -26,7 +28,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -110,5 +112,23 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
+}
+
+export async function getServerSideProps() {
+  memcached.set("hello", "world", { expires: 5 }, function (err, val) {
+    console.log("set memcached", err, val);
+  });
+  memcached.get("hello", function (err, val) {
+    console.log("get memcached", err, val?.toString());
+  });
+
+  const setValue = await redis.set("hello", "world");
+  console.log("set redis", setValue);
+  const getValue = await redis.get("hello");
+  console.log("get redis", getValue);
+
+  return {
+    props: {},
+  };
 }
