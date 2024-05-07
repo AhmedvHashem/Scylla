@@ -1,8 +1,8 @@
-var memjs = require("memjs");
+const memjs = require("memjs");
 
-var client = memjs.Client.create("localhost:11211", {
-  username: "memcache",
-  password: "memcache",
+const client = memjs.Client.create("localhost:11211", {
+    username: "memcache",
+    password: "memcache",
 });
 
 export default client;

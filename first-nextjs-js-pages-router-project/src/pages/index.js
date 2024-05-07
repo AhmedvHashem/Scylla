@@ -115,20 +115,33 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
-  memcached.set("hello", "world", { expires: 5 }, function (err, val) {
-    console.log("set memcached", err, val);
-  });
-  memcached.get("hello", function (err, val) {
-    console.log("get memcached", err, val?.toString());
+async function getCache() {
+  // const memcachedSetValue = await memcached.set("hello", "world from memcached", {expires: 5});
+  // console.log("set memcached", memcachedSetValue);
+  const memcachedGetValue = await memcached.get("hello");
+  console.log("get memcached", memcachedGetValue?.value?.toString());
+
+  memcached.stats(function (err, val) {
+    console.log("stats memcached", err, val);
   });
 
-  const setValue = await redis.set("hello", "world");
-  console.log("set redis", setValue);
-  const getValue = await redis.get("hello");
-  console.log("get redis", getValue);
+  // const redisSetValue = await redis.set("hello", "world from redis");
+  // console.log("set redis", redisSetValue);
+  const redisGetValue = await redis.get("hello");
+  console.log("get redis", redisGetValue);
 
   return {
-    props: {},
+    memcachedGetValue,
+    redisGetValue,
+  };
+}
+
+export async function getServerSideProps() {
+  const cache = await getCache();
+  return {
+    props: {
+      propFromGetServerSideProps: "propFromGetServerSideProps",
+      cacheFromGetServerSideProps: cache,
+    },
   };
 }
