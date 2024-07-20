@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bstpkl5t6k3lb"]
+
+[ext_resource type="Script" path="res://new_script.gd" id="1_g7bd8"]
+
+[node name="Node3D" type="Node3D"]
+visible = false
+script = ExtResource("1_g7bd8")
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(0, 36)
+visible = false
+
+[node name="Control" type="Control" parent="Window"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

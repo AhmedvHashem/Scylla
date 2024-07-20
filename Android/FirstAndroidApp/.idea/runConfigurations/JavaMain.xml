@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JavaMain" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.hashem.Main" />
+    <module name="FirstAndroidApp.java.main" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

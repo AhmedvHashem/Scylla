@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="KotlinMain" type="JetRunConfigurationType">
+    <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
+    <option name="MAIN_CLASS_NAME" value="com.hashem.MainKt" />
+    <module name="FirstAndroidApp.kotlin.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

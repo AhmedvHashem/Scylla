@@ -1,0 +1,15 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:FirstDjangoProject}/db.sqlite3",
+            "name": "djangodb"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
