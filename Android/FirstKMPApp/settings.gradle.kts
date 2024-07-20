@@ -1,4 +1,4 @@
-rootProject.name = "FirstComposeApp"
+rootProject.name = "FirstKMPApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

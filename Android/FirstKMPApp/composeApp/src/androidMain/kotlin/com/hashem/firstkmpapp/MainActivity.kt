@@ -1,4 +1,4 @@
-package com.hashem.firstcomposeapp
+package com.hashem.firstkmpapp
 
 import App
 import android.os.Bundle
