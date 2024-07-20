@@ -18,24 +18,22 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="@color/white"
             android:text="Hello World!"
+            android:translationZ="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:translationZ="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#3C0808"
             android:text="Hello World!"
             android:translationZ="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
