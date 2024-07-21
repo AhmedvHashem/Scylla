@@ -2,14 +2,18 @@ package com.hashem
 
 fun main(args: Array<String>) {
 
+    println("Hello, World!")
 //    val result = computeGameState("Bob", "Anna", listOf("Bob", "Anna", "Bob"))
 //    println(result)
 
+//    extracted()
+}
 
+private fun extracted() {
     data class PersonV2(
         val name: String,
         val data: CharArray,
-    ){
+    ) {
         fun asd() {
             data.asSequence()
         }
@@ -19,7 +23,6 @@ fun main(args: Array<String>) {
     val p1 = PersonV2("Amanda", charArrayOf('A', 'm', 'a', 'n', 'd', 'a'))
     val p2 = PersonV2("Amanda", charArrayOf('A', 'm', 'a', 'n', 'd', 'a'))
     println(p1.equals(p2))
-
 }
 
 fun reverse(x: Int): Int {

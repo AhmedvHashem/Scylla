@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FirstAndroidApp"
 include (":android")
-include (":kotlin")
 include (":java")
+include (":kotlin")

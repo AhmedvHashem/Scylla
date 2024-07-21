@@ -7,30 +7,30 @@ import kotlin.time.measureTime
 fun main(args: Array<String>) {
     println("Hello, World! Kotlin")
 
-    val time = measureTime {
-        // println(checkPalindrome("aaabaaaa"))
-        // println(adjacentElementsLargestProduct(mutableListOf(-23, 4, -3, 8, -12)))
-        // println(firstDuplicate2(mutableListOf(2, 1, 3, 5, 3, 2)))
-        // println(firstDuplicate2(mutableListOf(2, 4, 3, 5, 1)))
-        // println(firstDuplicate2(mutableListOf(1)))
-        // println(firstDuplicate2(mutableListOf(1, 1, 2, 2, 1)))
-        // println(firstDuplicate2(mutableListOf(1, 1, 2, 2, 1)))
-        // println(firstNotRepeatingCharacter("abacabad"))
-        // println(firstNotRepeatingCharacter("abacabaabacaba"))
-        // println(firstNotRepeatingCharacter("bcccccccb"))
-        // println(
-        //         rotateImageMatrix(
-        //                 mutableListOf(
-        //                         mutableListOf(1, 2, 3),
-        //                         mutableListOf(4, 5, 6),
-        //                         mutableListOf(7, 8, 9)
-        //                 )
-        //         )
-        // )
-        // println(removeKFromList())
-        // println(shapeArea(4))
-    }
-    println(time)
+//    val time = measureTime {
+//        // println(checkPalindrome("aaabaaaa"))
+//        // println(adjacentElementsLargestProduct(mutableListOf(-23, 4, -3, 8, -12)))
+//        // println(firstDuplicate2(mutableListOf(2, 1, 3, 5, 3, 2)))
+//        // println(firstDuplicate2(mutableListOf(2, 4, 3, 5, 1)))
+//        // println(firstDuplicate2(mutableListOf(1)))
+//        // println(firstDuplicate2(mutableListOf(1, 1, 2, 2, 1)))
+//        // println(firstDuplicate2(mutableListOf(1, 1, 2, 2, 1)))
+//        // println(firstNotRepeatingCharacter("abacabad"))
+//        // println(firstNotRepeatingCharacter("abacabaabacaba"))
+//        // println(firstNotRepeatingCharacter("bcccccccb"))
+//        // println(
+//        //         rotateImageMatrix(
+//        //                 mutableListOf(
+//        //                         mutableListOf(1, 2, 3),
+//        //                         mutableListOf(4, 5, 6),
+//        //                         mutableListOf(7, 8, 9)
+//        //                 )
+//        //         )
+//        // )
+//        // println(removeKFromList())
+//        // println(shapeArea(4))
+//    }
+//    println(time)
 }
 
 fun centuryOfYear(year: Int): Int {

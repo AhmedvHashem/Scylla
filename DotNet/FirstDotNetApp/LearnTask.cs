@@ -2,7 +2,7 @@ namespace FirstDotNetApp;
 
 public static class LearnTask
 {
-    public static void Maasdin(string[] args)
+    public static void Main(string[] args)
     {
         Console.WriteLine("Hello World! C# Program");
         Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
@@ -45,7 +45,7 @@ public static class LearnTask
         Console.WriteLine("Main after wait");
     }
 
-    public static async Task Main(string[] args)
+    public static async Task Main2(string[] args)
     {
         // part 1
         Console.WriteLine("Environment.CurrentManagedThreadId: " + Environment.CurrentManagedThreadId);
