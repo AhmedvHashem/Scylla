@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:first-swift-project}",
+            "name": "Debug first-swift-project",
+            "program": "${workspaceFolder:first-swift-project}\\.build\\debug\\first-swift-project.exe",
+            "preLaunchTask": "swift: Build Debug first-swift-project"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:first-swift-project}",
+            "name": "Release first-swift-project",
+            "program": "${workspaceFolder:first-swift-project}\\.build\\release\\first-swift-project.exe",
+            "preLaunchTask": "swift: Build Release first-swift-project"
+        }
+    ]
+}
