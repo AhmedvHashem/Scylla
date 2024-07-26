@@ -1,49 +1,13 @@
 {
-  "originHash" : "70be148b1f36ae2a203bac12146a3569048c29e910901a29770bfc61e40d53c6",
+  "originHash" : "c1bf6cdfd6a9a850326fe3b5f4818d69bd6f37287c32b610bf067c4c06e567f8",
   "pins" : [
     {
-      "identity" : "swift-argument-parser",
+      "identity" : "swiftformat",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "location" : "https://github.com/nicklockwood/SwiftFormat.git",
       "state" : {
-        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
-        "version" : "1.5.0"
-      }
-    },
-    {
-      "identity" : "swift-cmark",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-cmark.git",
-      "state" : {
-        "revision" : "3bc2f3e25df0cecc5dc269f7ccae65d0f386f06a",
-        "version" : "0.4.0"
-      }
-    },
-    {
-      "identity" : "swift-format",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-format.git",
-      "state" : {
-        "branch" : "release/5.10",
-        "revision" : "3191b8f3109730af449c6332d0b1ca6653b857a0"
-      }
-    },
-    {
-      "identity" : "swift-markdown",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-markdown.git",
-      "state" : {
-        "revision" : "4aae40bf6fff5286e0e1672329d17824ce16e081",
-        "version" : "0.4.0"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "branch" : "release/5.10",
-        "revision" : "303e5c5c36d6a558407d364878df131c3546fad8"
+        "revision" : "1a4e2fbfead4965b874e37cdff2f180091852f43",
+        "version" : "0.54.2"
       }
     }
   ],
