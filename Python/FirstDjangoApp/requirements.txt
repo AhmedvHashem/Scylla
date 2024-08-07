@@ -5,7 +5,7 @@ certifi==2023.11.17
 charset-normalizer==3.3.2
 click==8.1.7
 dill==0.3.7
-Django==4.2.5
+Django==4.2.15
 django-reversion==5.0.4
 django-simple-history==3.4.0
 djangorestframework==3.14.0
