@@ -1,43 +1,75 @@
 package com.hashem;
 
 import java.lang.ref.PhantomReference;
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-
-import javax.management.monitor.StringMonitor;
-import javax.naming.StringRefAddr;
+import java.net.http.HttpClient;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class Main {
+    public static void main(String[] args) throws Exception {
+        System.out.println("Hello World! Java");
 
-    public static String testString = "Hello World!";
+//        String name = "Bob";
+//        name.getBytes();
+//
+//        int x = 10;
+//        Integer y = 10;
+//        y.doubleValue();
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+//        HttpClient client = HttpClient.newBuilder().build();
+//
+//        IntStream.range(5, 10).forEach(System.out::println);
+//
+//        Optional<String> optional = Optional.empty();
 
-        StringMonitor stringMonitor = new StringMonitor();
-        StringRefAddr stringRefAddr = new StringRefAddr("test", testString);
-        WeakReference<String> weakReference = new WeakReference<>(testString);
-        PhantomReference<String> phantomReference = new PhantomReference<>(testString, null);
-        AtomicReference<String> atomiCReference = new AtomicReference<>(testString);
+//        String a = "hello";
+//        String b = "hello";
+//        System.out.println(a == b);  // true, because the contents of a and b are the same
+//        System.out.println(a.equals(b));
+//
+//        String c = null;
+//        System.out.println(a == c);  // false, a is not null and c is null
+//        System.out.println(a.equals(c));
+//
+//        String d = null;
+//        System.out.println(c == d);  // true, both are null
+//        System.out.println(c.equals(d));
+//        System.gc();
+//        System.runFinalization();
 
-        // Caching behavior
-        Long i1 = 127L;
-        Long i2 = 127L;
-        System.out.println(i1 == i2);  // true, due to caching
 
-        Long i3 = 128L;
-        Long i4 = 128L;
-        System.out.println(i3 == i4);  // false, outside cache range
+//        ObjectForReference strongReference = new ObjectForReference();
+//        strongReference.print();
+//
+//        SoftReference<ObjectForReference> softReference = new SoftReference<>(strongReference);
+//        WeakReference<ObjectForReference> weakReference = new WeakReference<>(strongReference);
+//        PhantomReference<ObjectForReference> phantomReference = new PhantomReference<>(strongReference, null);
+//
+//        strongReference = null;
+//        softReference.get().print();
+//        weakReference.get().print();
+////        phantomReference.get().print();
+//
+//        System.gc();
 
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        List<Integer> evenNumbers = numbers.stream()
-                .filter(n -> n % 2 == 0)
-                .toList();
-
-        StringBuffer stringBuffer = new StringBuffer();
+        Integer a = Integer.valueOf(1);
+        Integer b = Integer.valueOf(1);
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
     }
 }
 
+class ObjectForReference
+{
+    public void print()
+    {
+        System.out.println("I am a live!");
+    }
+
+    protected void finalize()
+    {
+        System.out.println("I am dead!");
+    }
+}

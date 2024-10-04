@@ -1,4 +1,4 @@
-package com.hashem.android
+package com.hashem.android.compose
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
