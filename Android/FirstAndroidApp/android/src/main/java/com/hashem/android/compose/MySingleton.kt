@@ -1,4 +1,4 @@
-package com.hashem.android
+package com.hashem.android.compose
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
@@ -26,5 +26,31 @@ class MySingleton private constructor(callback: () -> Unit) {
             delay(5000)
             callback()
         }
+    }
+
+    @JvmInline
+    value class EmployeeId(private val id: String)
+
+    @JvmInline
+    value class CustomerId(private val id: String)
+
+    fun doSomething() {
+        var v = arrayOf(1, 2, 3, 4, 5)
+        for (i in v) {
+            println(i)
+        }
+
+        val v2 = arrayListOf(1, 2, 3, 4, 5)
+        for (i in v) {
+            println(i)
+        }
+
+        val v3 = listOf(1, 2, 3, 4, 5)
+
+        val upperCaseString: (String) -> String = { text -> text.uppercase() }
+        val pairArray = arrayOf("apple" to 120, "banana" to 150, "cherry" to 90, "apple" to 140)
+
+
+
     }
 }

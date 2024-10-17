@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Build First Swift Project",
+            "program": "swift.exe",
+            "args": ["build"],
+        },
+        {
+            "type": "command",
+            "name": "Run First Swift Project",
+            "program": "swift.exe",
+            "args": ["run"],
+        },
+    ]
+}

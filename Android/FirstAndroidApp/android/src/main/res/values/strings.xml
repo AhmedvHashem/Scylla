@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FirstAndroidApp</string>
+    <string name="app_name_view_layout">First View Android App</string>
+    <string name="app_name_compose_layout">First Compose Android App</string>
 </resources>
