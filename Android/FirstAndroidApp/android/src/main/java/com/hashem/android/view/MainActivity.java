@@ -1,20 +1,16 @@
 package com.hashem.android.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.collection.SparseArrayCompat;
 
 import com.hashem.android.R;
 
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.IntStream;
-
-import io.reactivex.rxjava3.core.Observable;
 
 /**
  * Created by Hashem.
@@ -32,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         SparseArray<String> sparseArray = new SparseArray<>();
 
         Optional<String> optional = Optional.ofNullable(null);
+
+        CompletableFuture<Void> awdawd = CompletableFuture.runAsync(() -> {
+            System.out.println("CompletableFuture");
+        });
+
+        awdawd.thenRun(() -> {
+            System.out.println("CompletableFuture thenRun");
+        });
     }
 
     @Override
