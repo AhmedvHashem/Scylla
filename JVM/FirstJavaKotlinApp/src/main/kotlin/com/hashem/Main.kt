@@ -50,11 +50,11 @@ fun centuryOfYear(year: Int): Int {
     // 2001 to 2100 => 21
     var century = 0
     century =
-            if (year % 100 == 0) {
-                year / 100
-            } else {
-                (year / 100) + 1
-            }
+        if (year % 100 == 0) {
+            year / 100
+        } else {
+            (year / 100) + 1
+        }
 
     return century
 }
@@ -151,23 +151,23 @@ fun removeKFromList(node: ListNode<Int>?, k: Int): ListNode<Int>? {
 
 fun asd() {
     val ma: Array<Array<Array<Array<Int>>>> =
+        arrayOf(
             arrayOf(
-                    arrayOf(
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
-                    ),
-                    arrayOf(
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
-                    ),
-                    arrayOf(
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
-                            arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
-                    )
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
+            ),
+            arrayOf(
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
+            ),
+            arrayOf(
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9)),
+                arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
             )
+        )
 }
 
 fun shapeArea(n: Int): Int {
