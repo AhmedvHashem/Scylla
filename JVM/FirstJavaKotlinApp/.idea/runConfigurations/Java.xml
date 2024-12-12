@@ -2,12 +2,6 @@
   <configuration default="false" name="Java" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.hashem.Main" />
     <module name="FirstJavaKotlinApp.main" />
-    <extension name="coverage">
-      <pattern>
-        <option name="PATTERN" value="com.hashem.*" />
-        <option name="ENABLED" value="true" />
-      </pattern>
-    </extension>
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
