@@ -16,13 +16,21 @@ val i2: Int? = 127
 val i3: Int? = 128
 val i4: Int? = 128
 
+fun main() {
+    println(i1 === i2) // true, due to caching
+    println(i3 === i4) // false, outside cache range
+    println(i1 == i2) // true, due to caching
+    println(i3 == i4) // false, outside cache range
+    println(i1?.equals(i2) ?: (i2 === null)) // true, due to caching
+    println(i3?.equals(i4) ?: (i4 === null)) // false, outside cache range
+}
+
 //    println(i1 === i2) // true, due to caching
 //    println(i3 === i4) // false, outside cache range
 
 fun main1(args: Array<String>) {
     println("Thread: ${Thread.currentThread().name}")
     println("Hello, World! Kotlin")
-
 
     runBlocking(Dispatchers.Default) {
         println("Thread: ${Thread.currentThread().name}")
@@ -33,10 +41,7 @@ fun main1(args: Array<String>) {
             println("Hello, World! Kotlin")
 
             val asd = CoroutineScope(Dispatchers.IO).launch {
-
             }
-
-
             5
         }
     }
@@ -63,7 +68,7 @@ fun main1(args: Array<String>) {
     }
 }
 
-suspend fun main() = coroutineScope {
+suspend fun main2() = coroutineScope {
     println("Thread: ${Thread.currentThread().name}")
     println("Hello, World! Kotlin")
 

@@ -26,7 +26,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    //Kotlin
+    // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
 
-    //Compose LayoutSystem
+    // Compose LayoutSystem
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation(platform("androidx.compose:compose-bom:2024.12.01"))
     implementation("androidx.compose.ui:ui")
@@ -67,7 +67,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Libs
-    implementation("io.reactivex.rxjava3:rxjava:3.1.9")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.10")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
 
