@@ -11,8 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/android" />
-            <option value="$PROJECT_DIR$/java" />
-            <option value="$PROJECT_DIR$/kotlin" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

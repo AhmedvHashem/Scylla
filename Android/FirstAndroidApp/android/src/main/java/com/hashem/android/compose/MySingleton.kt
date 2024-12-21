@@ -50,7 +50,13 @@ class MySingleton private constructor(callback: () -> Unit) {
         val upperCaseString: (String) -> String = { text -> text.uppercase() }
         val pairArray = arrayOf("apple" to 120, "banana" to 150, "cherry" to 90, "apple" to 140)
 
-
+        ArrayDeque<Int>().apply {
+            add(1)
+            add(2)
+            add(3)
+        }.forEach {
+            println(it)
+        }
 
     }
 }

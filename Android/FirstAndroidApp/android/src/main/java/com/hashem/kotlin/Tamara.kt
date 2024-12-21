@@ -1,4 +1,4 @@
-package com.hashem
+package com.hashem.kotlin
 
 fun boundingRectangle(points: List<List<Int>>): List<Int> {
     // Initialize variables to store min and max values for x and y coordinates

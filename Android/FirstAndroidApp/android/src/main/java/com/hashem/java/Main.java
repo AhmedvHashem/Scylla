@@ -1,4 +1,4 @@
-package com.hashem;
+package com.hashem.java;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.SoftReference;
@@ -58,18 +58,7 @@ public class Main {
         Integer b = Integer.valueOf(1);
         System.out.println(a == b);
         System.out.println(a.equals(b));
-    }
-}
 
-class ObjectForReference
-{
-    public void print()
-    {
-        System.out.println("I am a live!");
-    }
 
-    protected void finalize()
-    {
-        System.out.println("I am dead!");
     }
 }
