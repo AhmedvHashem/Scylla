@@ -1,5 +1,3 @@
-package com.hashem
-
 fun main() {
     println(operations(listOf("INSERT Code", "INSERT Signal", "UNDO", "UNDO", "BACKSPACE", "UNDO")))
 }

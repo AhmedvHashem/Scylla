@@ -1,5 +1,3 @@
-package com.hashem;
-
 /**
  * Created by AhmedNTS on 6/14/2017.
  */

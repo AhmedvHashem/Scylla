@@ -1,5 +1,3 @@
-package com.hashem
-
 import kotlin.time.measureTime
 
 fun main(args: Array<String>) {

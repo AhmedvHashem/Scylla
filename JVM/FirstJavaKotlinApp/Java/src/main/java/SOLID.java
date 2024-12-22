@@ -1,5 +1,3 @@
-package com.hashem;
-
 public class SOLID {
 
     public static void main(String[] args) {

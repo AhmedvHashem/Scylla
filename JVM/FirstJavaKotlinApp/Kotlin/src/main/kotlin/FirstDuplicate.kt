@@ -1,5 +1,3 @@
-package com.hashem
-
 fun firstDuplicate(a: MutableList<Int>): Int {
     var smallestIndex = -1
     for (i in 0 until a.size) {

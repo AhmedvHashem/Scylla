@@ -1,5 +1,3 @@
-package com.hashem;
-
 public class Strings {
     public static void main(String[] args) {
         // System.out.print("hasUniqueChars: " + hasUniqueChars("Wording"));

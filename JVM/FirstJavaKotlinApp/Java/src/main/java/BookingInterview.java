@@ -1,8 +1,4 @@
-package com.hashem;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /*
     Booking interview solutions

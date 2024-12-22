@@ -1,5 +1,3 @@
-package com.hashem
-
 fun main(args: Array<String>) {
     println("Modulo : " + 4 % 20)
 
