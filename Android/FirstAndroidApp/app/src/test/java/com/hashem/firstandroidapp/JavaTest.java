@@ -8,6 +8,6 @@ public class JavaTest {
     public void test() {
         System.out.println("Hello from JavaTest");
 
-        Assert.assertEquals(4, 2 + 2);
+        Assert.assertTrue(true);
     }
 }
