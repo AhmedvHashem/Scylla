@@ -15,5 +15,5 @@ urllib3 = "==1.26.14"
 [dev-packages]
 
 [requires]
-python_version = "3.12"
-python_full_version = "3.12.4"
+python_version = "3.13"
+python_full_version = "3.13.0"
