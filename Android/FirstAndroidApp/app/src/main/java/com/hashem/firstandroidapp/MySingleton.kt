@@ -9,6 +9,20 @@ import kotlinx.coroutines.launch
  * Created by Hashem.
  */
 
+open class Test constructor(val hi: String) {
+
+    fun test() {
+        hi.uppercase()
+    }
+}
+class TestSub constructor(): Test("") {
+     fun test2() {
+        hi.uppercase()
+    }
+}
+
+
+
 class MySingleton private constructor(callback: () -> Unit) {
     companion object {
         private var ourInstance: MySingleton? = null

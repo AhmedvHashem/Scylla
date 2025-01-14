@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world! Java");
@@ -45,11 +47,25 @@ public class Main {
 //
 //        System.gc();
 
-        Integer a = Integer.valueOf(1);
-        Integer b = Integer.valueOf(1);
-        System.out.println(a == b);
-        System.out.println(a.equals(b));
+//        Integer a = Integer.valueOf(1);
+//        Integer b = Integer.valueOf(1);
+//        System.out.println(a == b);
+//        System.out.println(a.equals(b));
 
+
+//        int sum = 0;
+//        int i = 10;
+//
+//        while (i < 1) {
+//            sum += i;
+//            sum = sum + 2;
+//            i--;
+//        }
+//        System.out.println(sum);
+
+//        String[] y = {"1", "2", "15", "-7", "300"};
+//        Arrays.sort(y);
+//        System.out.println(y[0]);
 
     }
 }
