@@ -12,5 +12,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FirstJavaKotlinApp"
-include("Java")
-include("Kotlin")
+include("FirstJavaApp")
+include("FirstKotlinApp")
