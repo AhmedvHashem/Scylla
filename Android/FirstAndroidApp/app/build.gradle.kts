@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.coroutines)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
