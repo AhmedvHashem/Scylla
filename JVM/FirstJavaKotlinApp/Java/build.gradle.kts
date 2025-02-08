@@ -13,9 +13,5 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
 group = "com.hashem.java"
 version = "1.0"
