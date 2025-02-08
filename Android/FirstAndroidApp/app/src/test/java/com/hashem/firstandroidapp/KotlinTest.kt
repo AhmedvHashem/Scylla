@@ -11,6 +11,21 @@ class KotlinTest {
 
         Assert.assertTrue(true)
 
+        val stringOne = "Hello"
+        val stringTwo = "Hello"
+
+        println(stringOne === stringTwo)
+        println(stringOne == stringTwo)
+        println(stringOne.equals(stringTwo))
+
+        stringOne.let {
+
+        }
+
+        stringTwo.run {
+
+        }
+
         val array = arrayOf(1, 2, 3, 2, 5)
         array.size
         array.reverse()
@@ -54,6 +69,36 @@ class KotlinTest {
         heap.add(2)
         heap.add(3)
 
-        println(heap.poll())
+        println(heap.poll() ?: "")
+
+
+    }
+
+    @Test
+    fun test2() {
+        val nums = intArrayOf(4, 5, 6, 7, 0, 1, 2)
+        val target = 0
+
+        val result = search(nums, target)
+        Assert.assertEquals(4, result)
+    }
+
+
+    private fun search(nums: IntArray, target: Int): Int {
+        println(nums.size)
+
+        val n = nums.size
+        val mid = n / 2
+        val left = nums[mid - 1]
+        val right = nums[mid + 1]
+
+        if (nums[mid] == target) {
+            return mid
+        }
+
+        return if (target < nums[mid])
+            search(nums.sliceArray(0 until mid), target)
+        else
+            search(nums.sliceArray(mid until n), target)
     }
 }

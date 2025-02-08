@@ -1,4 +1,4 @@
-package com.hashem.android.services
+package com.hashem.firstandroidapp.services
 
 import android.app.Service
 import android.content.Intent

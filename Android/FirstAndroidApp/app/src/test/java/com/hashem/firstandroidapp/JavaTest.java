@@ -18,6 +18,12 @@ public class JavaTest {
 
         Assert.assertTrue(true);
 
+        String stringOne = "Hello";
+        String stringTwo = "Hello";
+
+        System.out.println(stringOne == stringTwo);
+        System.out.println(stringOne.equals(stringTwo));
+
         ArrayDeque<String> deque = new ArrayDeque<>();
         deque.add("Hello");
         deque.add("World");
