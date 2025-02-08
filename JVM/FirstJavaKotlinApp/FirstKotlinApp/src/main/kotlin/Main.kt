@@ -1,50 +1,14 @@
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import java.util.PriorityQueue
-import java.util.Stack
+import kotlinx.coroutines.*
+import utils.test
+import java.util.*
+import kotlin.collections.ArrayDeque
+import kotlin.collections.component1
+import kotlin.collections.component2
 
-infix fun String.example(function: () -> Unit) {
-    println("---Example of $this---")
-    function()
-    println()
-}
-
-suspend fun main(args: Array<String>) {
+fun main(args: Array<String>) {
     println("Hello, World! Kotlin")
 
-        coroutineScope {
-            val flow = flowOf(1, 2, 3, 4, 5)
-            flow.collect {
-                println(it)
-            }
-
-            flow.collect {
-                println(it)
-            }
-
-            val stateFlow = MutableSharedFlow<Int>(
-                replay = 1,
-                extraBufferCapacity = 1
-            )
-            stateFlow.emit(1)
-            stateFlow.collect {
-                println(it)
-            }
-
-    }
-
-    return
-
-    "int caching" example {
+    "int caching" test  {
         // Caching behavior
         val i1: Int? = 127
         val i2: Int? = 127
@@ -62,8 +26,7 @@ suspend fun main(args: Array<String>) {
         println(i3?.equals(i4)) // false, outside cache range
     }
 
-    "kotlin collection" example {
-
+    "kotlin collection" test {
         hashMapOf("a" to 1, "b" to 2).forEach { (key, value) ->
             println("$key -> $value")
         }
@@ -152,11 +115,9 @@ suspend fun main(args: Array<String>) {
         intarray.binarySearch(2).let {
             println(it)
         }
-
-
     }
 
-    "insertion sort" example {
+    "insertion sort" test {
         val x = intArrayOf(5, 2, 9, 1, 3)
         var key: Int
 
