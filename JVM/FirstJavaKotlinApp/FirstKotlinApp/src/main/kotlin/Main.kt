@@ -1,5 +1,5 @@
 import kotlinx.coroutines.*
-import utils.test
+import utils.runFunction
 import java.util.*
 import kotlin.collections.ArrayDeque
 import kotlin.collections.component1
@@ -8,7 +8,7 @@ import kotlin.collections.component2
 fun main(args: Array<String>) {
     println("Hello, World! Kotlin")
 
-    "int caching" test  {
+    "int caching".runFunction(true) {
         // Caching behavior
         val i1: Int? = 127
         val i2: Int? = 127
@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
         println(i3?.equals(i4)) // false, outside cache range
     }
 
-    "kotlin collection" test {
+    "kotlin collection".runFunction(true) {
         hashMapOf("a" to 1, "b" to 2).forEach { (key, value) ->
             println("$key -> $value")
         }
@@ -117,7 +117,7 @@ fun main(args: Array<String>) {
         }
     }
 
-    "insertion sort" test {
+    "insertion sort".runFunction(true) {
         val x = intArrayOf(5, 2, 9, 1, 3)
         var key: Int
 

@@ -1,13 +1,19 @@
-fun main(args: Array<String>) {
-    println("Modulo : " + 4 % 20)
+import utils.runFunction
 
-    fibonacci(0, 1, 0, 10)
+fun main(args: Array<String>) {
+    "fibonacci".runFunction(true) {
+        fibonacci(0, 1, 0, 10)
+    }
+
+    "reverse".runFunction(true) {
+        println(reverse(15))
+    }
 }
 
 fun fibonacci(f0: Int, f1: Int, fib: Int, n: Int) {
     var f0 = f0
     var f1 = f1
-    var fib = fib
+    val fib: Int
     if (n > 0) {
         fib = f0 + f1
         f0 = f1
@@ -36,10 +42,10 @@ fun isPrime(number: Int): Boolean {
  *
  * @return reverse of number
  */
-fun reverse(number: Int): Int {
-    var number = number
+fun reverse(num: Int): Int {
+    var number = num
     var reverse = 0
-    var remainder = 0
+    var remainder: Int
     do {
         remainder = number % 10
         reverse = reverse * 10 + remainder
