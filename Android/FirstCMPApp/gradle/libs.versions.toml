@@ -33,6 +33,8 @@ mockitoCore = "5.15.2"
 mockitoKotlin = "5.4.0"
 truth = "1.1.3"
 
+androidxCore = "1.6.1"
+androidxRunner = "1.6.2"
 androidxJunit = "1.2.1"
 androidxEspressoCore = "3.6.1"
 
@@ -77,6 +79,8 @@ mocking-mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin"
 asserting-truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 testing-compose-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
+testing-androidx-core = { group = "androidx.test", name = "core", version.ref = "androidxCore" }
+testing-androidx-runner = { group = "androidx.test", name = "runner", version.ref = "androidxRunner" }
 testing-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 testing-androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspressoCore" }
 testing-androidx-compose = { group = "androidx.compose.ui", name = "ui-test" }
@@ -85,6 +89,7 @@ testing-androidx-compose-manifest = { group = "androidx.compose.ui", name = "ui-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

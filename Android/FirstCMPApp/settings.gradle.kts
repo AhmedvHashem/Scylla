@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":shared")
+
+
 rootProject.name = "FirstCMPApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
