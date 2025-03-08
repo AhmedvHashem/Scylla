@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!").padding().bold()
-        MetalView().frame(height: 300)
+        //MetalView().frame(height: 300)
     }
 }
 
