@@ -1,6 +1,6 @@
 [versions]
-agp = "8.8.0"
-ksp = "2.0.21-1.0.27"
+agp = "8.9.0"
+ksp = "2.1.0-1.0.29"
 kotlin = "2.1.0"
 kotlinSerialization = "1.8.0"
 kotlinCoroutines = "1.10.1"
@@ -8,12 +8,12 @@ kotlinCoroutines = "1.10.1"
 coreKtx = "1.15.0"
 lifecycleRuntimeKtx = "2.8.7"
 
-activity = "1.10.0"
+activity = "1.10.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 
-activityCompose = "1.10.0"
-composeBom = "2025.01.01"
+activityCompose = "1.10.1"
+composeBom = "2025.02.00"
 
 retrofit = "2.11.0"
 okhttp = "4.12.0"

@@ -20,5 +20,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FirstAndroidApp"
-include(":app")
- 
+include(":androidApp")
+include(":androidLib")
+include(":androidNativeLib")
