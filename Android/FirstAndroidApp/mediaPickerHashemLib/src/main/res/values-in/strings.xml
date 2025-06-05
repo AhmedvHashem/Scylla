@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Ambil foto</string>
+    <string name="image_picker_upload">Unggah</string>
+    <string name="image_picker_access_required">Akses diperlukan</string>
+    <string name="image_picker_settings">Pengaturan</string>
+    <string name="image_picker_cancel">Batal</string>
+    <string name="image_picker_camera_permission">Izinkan akses Kamera, Foto, dan Media untuk ikut serta dalam meja jejaring dan untuk menetapkan gambar profil Anda.</string>
+</resources>

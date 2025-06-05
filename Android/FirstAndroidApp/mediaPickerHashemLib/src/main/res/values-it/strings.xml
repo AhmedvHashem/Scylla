@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Scatta una foto</string>
+    <string name="image_picker_upload">Carica</string>
+    <string name="image_picker_access_required">Accesso necessario</string>
+    <string name="image_picker_settings">Impostazioni</string>
+    <string name="image_picker_cancel">Cancella</string>
+    <string name="image_picker_camera_permission">Consenti l\'accesso a Fotocamera, Foto e Media per partecipare ai tavoli di networking e per impostare la tua foto profilo.</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Fotoğraf çek</string>
+    <string name="image_picker_upload">Yükle</string>
+    <string name="image_picker_access_required">Erişim gerekli</string>
+    <string name="image_picker_settings">Ayarlar</string>
+    <string name="image_picker_cancel">İptal</string>
+    <string name="image_picker_camera_permission">Ağ oluşturma tablolarına katılmak ve profil resminizi ayarlamak için Kamera, Fotoğraflar ve Medya erişimine izin verin.</string>
+</resources>

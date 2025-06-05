@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Chụp ảnh</string>
+    <string name="image_picker_upload">Tải lên</string>
+    <string name="image_picker_access_required">Cần có quyền truy cập</string>
+    <string name="image_picker_settings">Thiết đặt</string>
+    <string name="image_picker_cancel">Hủy</string>
+    <string name="image_picker_camera_permission">Cho phép truy cập Máy ảnh, Ảnh và Media để tham gia vào các bàn kết nối xã hội và đặt ảnh hồ sơ của bạn.</string>
+</resources>

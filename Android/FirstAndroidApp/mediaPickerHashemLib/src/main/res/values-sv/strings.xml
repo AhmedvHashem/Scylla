@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Ta ett foto</string>
+    <string name="image_picker_upload">Ladda upp</string>
+    <string name="image_picker_access_required">Åtkomst krävs</string>
+    <string name="image_picker_settings">Inställningar</string>
+    <string name="image_picker_cancel">Avbryt</string>
+    <string name="image_picker_camera_permission">Tillåt kamera, foton och media att delta i nätverkstabeller och att ställa in din profilbild.</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Een foto maken</string>
+    <string name="image_picker_upload">Uploaden</string>
+    <string name="image_picker_access_required">Toegang vereist</string>
+    <string name="image_picker_settings">Instellingen</string>
+    <string name="image_picker_cancel">Annuleer</string>
+    <string name="image_picker_camera_permission">Geef Camera, Foto\'s en Media toegang tot netwerktafels en om uw profielfoto in te stellen.</string>
+</resources>

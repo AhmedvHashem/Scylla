@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Сделать снимок</string>
+    <string name="image_picker_upload">Загрузить</string>
+    <string name="image_picker_access_required">Требуется доступ</string>
+    <string name="image_picker_settings">Настройки</string>
+    <string name="image_picker_cancel">Отменить</string>
+    <string name="image_picker_camera_permission">Предоставьте доступ камере, галерее и медиа для участия в зонах нетворкинга и добавления фото профиля.</string>
+</resources>

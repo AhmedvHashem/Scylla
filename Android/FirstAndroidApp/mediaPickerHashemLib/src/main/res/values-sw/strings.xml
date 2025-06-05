@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Piga picha</string>
+    <string name="image_picker_upload">Pakia</string>
+    <string name="image_picker_access_required">Unahitaji idhini ya kufikia</string>
+    <string name="image_picker_settings">Mipangilio</string>
+    <string name="image_picker_cancel">Ghairi</string>
+    <string name="image_picker_camera_permission">Ruhusu ufikiaji wa Kamera, Picha na Maudhui ili kushiriki katika meza za mahusiano na kuweka picha yako ya wasifu.</string>
+</resources>

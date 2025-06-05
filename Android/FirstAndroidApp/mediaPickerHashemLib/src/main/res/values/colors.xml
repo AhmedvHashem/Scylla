@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="image_picker_primary_action_text_color">@android:color/white</color>
+    <color name="image_picker_primary_action_background_color">@color/theme1</color>
+    <color name="image_picker_secondary_action_background_color">#8E9BAA</color>
+    <color name="image_picker_secondary_action_text_color">#2D303E</color>
+</resources>
