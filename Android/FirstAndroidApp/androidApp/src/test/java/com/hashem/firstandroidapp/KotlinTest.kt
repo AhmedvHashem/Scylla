@@ -2,7 +2,13 @@ package com.hashem.firstandroidapp
 
 import org.junit.Assert
 import org.junit.Test
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.util.Date
 import java.util.PriorityQueue
+import java.util.TimeZone
 
 class KotlinTest {
     @Test
@@ -81,6 +87,38 @@ class KotlinTest {
 
         val result = search(nums, target)
         Assert.assertEquals(4, result)
+    }
+
+    @Test
+    fun test3() {
+        val zoneId = ZoneId.of("Europe/London")
+
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        format.timeZone = TimeZone.getTimeZone("UTC")
+
+        //from server date to building date
+        val utcDate: Date = format.parse("2025-06-29T23:00:00.0000000Z")
+        val zonedDateTime = utcDate.toInstant().atZone(zoneId)
+        val localDateTime = zonedDateTime.toLocalDate()
+
+        //from building date to server date
+        val selectedDateM = localDateTime.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        val selectedDate = Instant.ofEpochMilli(selectedDateM).atZone(ZoneOffset.UTC)
+        val selectedLocalDate = selectedDate.toLocalDate()
+
+        val selectedDateOld = Date.from(selectedLocalDate.atStartOfDay(zoneId).toInstant())
+        val dateFormatAsString = format.format(selectedDateOld)
+
+        println(dateFormatAsString)
+        println()
+
+
+//        val dateString = "2025-06-29T23:00:00.0000000Z"
+//        val utcDateTime = ZonedDateTime.parse(dateString)
+//        val zonedDateTime = utcDateTime.withZoneSameInstant(ZoneId.of("Europe/London")).toLocalDateTime()
+//        println(zonedDateTime)
+//        println(zonedDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yy")))
+//        println()
     }
 
 
