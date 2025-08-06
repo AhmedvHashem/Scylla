@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">写真を撮る</string>
+    <string name="image_picker_upload">アップロード</string>
+    <string name="image_picker_access_required">アクセスが必要です</string>
+    <string name="image_picker_settings">設定</string>
+    <string name="image_picker_cancel">キャンセル</string>
+    <string name="image_picker_camera_permission">カメラ、写真、メディアへのアクセスを許可し、ネットワーキングテーブルに参加してプロフィール画像を設定します。</string>
+</resources>

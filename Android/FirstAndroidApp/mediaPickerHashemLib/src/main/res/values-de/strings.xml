@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Foto machen</string>
+    <string name="image_picker_upload">Hochladen</string>
+    <string name="image_picker_access_required">Zugang erforderlich</string>
+    <string name="image_picker_settings">Einstellungen</string>
+    <string name="image_picker_cancel">Abbrechen</string>
+    <string name="image_picker_camera_permission">Kamera, Fotos und Medien können an Netzwerktabellen teilnehmen und Ihr Profilbild einstellen.</string>
+</resources>

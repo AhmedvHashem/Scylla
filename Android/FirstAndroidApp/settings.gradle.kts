@@ -20,5 +20,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FirstAndroidApp"
-include(":app")
- 
+include(":androidApp")
+include(":androidLib")
+include(":androidNativeLib")
+include(":mediaPickerLib")
+include(":mediaPickerManusLib")
+include(":mediaPickerHashemLib")

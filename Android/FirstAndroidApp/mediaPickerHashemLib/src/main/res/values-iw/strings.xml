@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">צילום תמונה</string>
+    <string name="image_picker_upload">העלאה</string>
+    <string name="image_picker_access_required">נדרשת גישה</string>
+    <string name="image_picker_settings">הגדרות</string>
+    <string name="image_picker_cancel">ביטול</string>
+    <string name="image_picker_camera_permission">יש לאפשר גישה ל\'מצלמה\', \'תמונות\' ו\'מדיה\' כדי להשתתף בשולחנות נטוורקינג ולהגדיר את תמונת הפרופיל שלך.</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">تصویر لیں</string>
+    <string name="image_picker_upload">اپ لوڈ</string>
+    <string name="image_picker_access_required">رسائی درکار ہے</string>
+    <string name="image_picker_settings">ترتیبات</string>
+    <string name="image_picker_cancel">منسوخ کریں</string>
+    <string name="image_picker_camera_permission">نیٹ ورکنگ ٹیبلز میں شامل ہونے اور اپنی پروفائل تصویر سیٹ کرنے کے لیے کیمرہ، تصاویر اور میڈیا کی رسائی کی اجازت دیں۔</string>
+</resources>

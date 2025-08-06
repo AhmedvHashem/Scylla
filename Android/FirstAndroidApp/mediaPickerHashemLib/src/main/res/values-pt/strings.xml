@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Tirar uma foto</string>
+    <string name="image_picker_upload">Enviar</string>
+    <string name="image_picker_access_required">Acesso necessário</string>
+    <string name="image_picker_settings">Configurações</string>
+    <string name="image_picker_cancel">Cancelar</string>
+    <string name="image_picker_camera_permission">Permita o acesso da Câmera, das Fotos e da Mídia para participar nas mesas de relações e para definir a foto do seu perfil.</string>
+</resources>

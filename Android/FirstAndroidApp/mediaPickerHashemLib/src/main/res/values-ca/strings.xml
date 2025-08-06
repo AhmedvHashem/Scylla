@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Fes una foto</string>
+    <string name="image_picker_upload">Puja</string>
+    <string name="image_picker_access_required">Cal l\'accés</string>
+    <string name="image_picker_settings">Configuració</string>
+    <string name="image_picker_cancel">Cancel·la</string>
+    <string name="image_picker_camera_permission">Permet l\'accès a la càmera, les fotos i el contingut multimèdia per participar en taules de xarxes i definir la vostra imatge de perfil.</string>
+</resources>

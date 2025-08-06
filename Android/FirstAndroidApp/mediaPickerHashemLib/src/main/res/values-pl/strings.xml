@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">Zrób zdjęcie</string>
+    <string name="image_picker_upload">Prześlij</string>
+    <string name="image_picker_access_required">Wymagany dostęp</string>
+    <string name="image_picker_settings">Ustawienia</string>
+    <string name="image_picker_cancel">Anuluj</string>
+    <string name="image_picker_camera_permission">Zezwól na dostęp do aparatu, zdjęć i multimediów, aby dołączyć do stanowisk do nawiązywania kontaktów i ustawić swoje zdjęcie profilowe.</string>
+</resources>

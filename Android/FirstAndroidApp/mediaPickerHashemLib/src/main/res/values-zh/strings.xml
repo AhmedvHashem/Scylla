@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">拍照</string>
+    <string name="image_picker_upload">上传</string>
+    <string name="image_picker_access_required">需要访问权限</string>
+    <string name="image_picker_settings">设置</string>
+    <string name="image_picker_cancel">取消</string>
+    <string name="image_picker_camera_permission">允许相机、 照片和媒体访问在线表格和设置您的头像。</string>
+</resources>

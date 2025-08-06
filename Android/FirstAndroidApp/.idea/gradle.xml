@@ -6,14 +6,18 @@
       <GradleProjectSettings>
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/androidApp" />
+            <option value="$PROJECT_DIR$/androidLib" />
+            <option value="$PROJECT_DIR$/androidNativeLib" />
+            <option value="$PROJECT_DIR$/mediaPickerHashemLib" />
+            <option value="$PROJECT_DIR$/mediaPickerLib" />
+            <option value="$PROJECT_DIR$/mediaPickerManusLib" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

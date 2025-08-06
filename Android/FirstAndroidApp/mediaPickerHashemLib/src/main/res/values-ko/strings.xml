@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image picker -->
+    <string name="image_picker_take_a_photo">사진 촬영</string>
+    <string name="image_picker_upload">업로드</string>
+    <string name="image_picker_access_required">액세스 필요</string>
+    <string name="image_picker_settings">설정</string>
+    <string name="image_picker_cancel">취고</string>
+    <string name="image_picker_camera_permission">카메라, 사진 및 미디어 액세스를 허용하여 네트워킹 테이블에 참여하고 프로필 사진을 설정합니다.</string>
+</resources>
