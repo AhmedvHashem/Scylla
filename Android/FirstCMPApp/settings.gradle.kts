@@ -1,8 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":shared")
-
-
 rootProject.name = "FirstCMPApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -33,5 +30,6 @@ dependencyResolutionManagement {
     }
 }
 
+include(":shared")
 include(":composeApp")
 include(":androidApp")
