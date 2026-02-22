@@ -1,5 +1,8 @@
+package old
+
 import utils.runFunction
 import utils.swap
+import kotlin.text.iterator
 
 fun main() {
     "mid".runFunction(false) {

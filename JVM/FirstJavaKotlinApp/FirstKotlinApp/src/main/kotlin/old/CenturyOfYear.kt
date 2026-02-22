@@ -1,3 +1,5 @@
+package old
+
 fun centuryOfYear(year: Int): Int {
     // 1 to 100 => 1
     // 101 to 200 => 2

@@ -1,3 +1,5 @@
+package old
+
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.exceptions.UndeliverableException
 import io.reactivex.rxjava3.functions.Consumer
@@ -19,7 +21,7 @@ class DefaultRxErrorConsumer : Consumer<Throwable> {
 
 fun main(args: Array<String>) {
 
-//    RxJavaPlugins.setErrorHandler(DefaultRxErrorConsumer())
+//    RxJavaPlugins.setErrorHandler(old.DefaultRxErrorConsumer())
     RxJavaPlugins.setErrorHandler { t ->
         var throwable = t
         if (throwable is UndeliverableException) {

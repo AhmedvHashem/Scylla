@@ -1,11 +1,13 @@
+package old
+
 import utils.runFunction
 
 fun main(args: Array<String>) {
-    "fibonacci".runFunction(true) {
+    "old.fibonacci".runFunction(true) {
         fibonacci(0, 1, 0, 10)
     }
 
-    "reverse".runFunction(true) {
+    "old.reverse".runFunction(true) {
         println(reverse(15))
     }
 }
@@ -38,9 +40,9 @@ fun isPrime(number: Int): Boolean {
 }
 
 /*
- * reverse a number in Java using iteration
+ * old.reverse a number in Java using iteration
  *
- * @return reverse of number
+ * @return old.reverse of number
  */
 fun reverse(num: Int): Int {
     var number = num

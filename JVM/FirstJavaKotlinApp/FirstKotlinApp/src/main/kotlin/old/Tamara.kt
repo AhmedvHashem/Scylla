@@ -1,3 +1,5 @@
+package old
+
 fun boundingRectangle(points: List<List<Int>>): List<Int> {
     // Initialize variables to store min and max values for x and y coordinates
     var minX = Int.MAX_VALUE
