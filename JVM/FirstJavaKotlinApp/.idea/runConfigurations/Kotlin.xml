@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Kotlin" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="MainKt" />
-    <module name="FirstJavaKotlinApp.FirstKotlinApp.main" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
-</component>
