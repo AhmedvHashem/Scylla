@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
@@ -10,20 +8,6 @@ kotlin {
 // Target declarations - add or remove as needed below. These define
 // which platforms this KMP module supports.
 // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
-    androidLibrary {
-        namespace = "com.hashem.shared"
-        compileSdk = 35
-        minSdk = 28
-
-        withHostTestBuilder {
-        }
-
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }.configure {
-            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-    }
 
 // For iOS targets, this is also where you should
 // configure native binary output. For more information, see:
@@ -32,41 +16,53 @@ kotlin {
 // A step-by-step guide on how to include this library in an XCode
 // project can be found here:
 // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcFrameworkName = "SharedKit"
 
-    iosX64 {
-        binaries.framework {
-            baseName = xcFrameworkName
+    androidLibrary {
+        namespace = "com.hashem.shared"
+        compileSdk = 36
+        minSdk = 28
+    }
+    val sharedLibraryName = "SharedLibrary"
+
+    androidNativeArm64 {
+        binaries.sharedLib {
+            baseName = sharedLibraryName
         }
     }
 
+//    iosSimulatorArm64 {
+//        binaries.framework {
+//            baseName = sharedLibraryName
+//        }
+//    }
     iosArm64 {
         binaries.framework {
-            baseName = xcFrameworkName
+            baseName = sharedLibraryName
         }
     }
 
-    iosSimulatorArm64 {
+    macosArm64 {
         binaries.framework {
-            baseName = xcFrameworkName
+            baseName = sharedLibraryName
         }
     }
 
-// Source set declarations.
-// Declaring a target automatically creates a source set with the same name. By default, the
-// Kotlin Gradle Plugin creates additional source sets that depend on each other, since it is
-// common to share sources between related targets.
-// See: https://kotlinlang.org/docs/multiplatform-hierarchy.html
+    mingwX64 {
+        binaries.sharedLib {
+            baseName = sharedLibraryName
+        }
+    }
+
+    linuxX64 {
+        binaries.sharedLib {
+            baseName = sharedLibraryName
+        }
+    }
+
     sourceSets {
         commonMain {
             dependencies {
                 // Add KMP dependencies here
-            }
-        }
-
-        commonTest {
-            dependencies {
-                implementation(libs.testing.kotlin)
             }
         }
 
@@ -75,14 +71,6 @@ kotlin {
                 // Add Android-specific dependencies here. Note that this source set depends on
                 // commonMain by default and will correctly pull the Android artifacts of any KMP
                 // dependencies declared in commonMain.
-            }
-        }
-
-        getByName("androidDeviceTest") {
-            dependencies {
-                implementation(libs.testing.androidx.core)
-                implementation(libs.testing.androidx.runner)
-                implementation(libs.testing.androidx.junit)
             }
         }
 
