@@ -1,6 +1,19 @@
 package glovo
 
-// in 2025 interview
+fun main() {
+    val list = listOf(1, 2, 3, 4, 5)
+    val result = list.alternatingSort { it }
+    println(result)
+
+    val str = "Hello, World!"
+    val result2 = str.reverseWithExceptions { it.isLetter() }
+    println(result2)
+
+    val result3 = str.reverseLettersOnly()
+    println(result3)
+}
+
+// 2025 interview
 /**
  * Extension function to sort a list of elements in an alternating (zigzag) pattern:
  * [smallest, largest, second smallest, second largest, ...]
