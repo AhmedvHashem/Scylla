@@ -1,4 +1,4 @@
-﻿namespace FirstDotNetApp;
+﻿namespace FirstDotNetProject;
 
 public static class Program
 {

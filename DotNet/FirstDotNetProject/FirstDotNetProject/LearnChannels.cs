@@ -1,6 +1,6 @@
 using System.Threading.Channels;
 
-namespace FirstDotNetApp;
+namespace FirstDotNetProject;
 
 public static class LearnChannels
 {
