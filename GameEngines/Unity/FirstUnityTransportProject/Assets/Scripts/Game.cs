@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FirstUnityURPProject
+namespace FirstUnityTransportProject
 {
     public class Game : MonoBehaviour
     {

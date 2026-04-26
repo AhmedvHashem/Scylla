@@ -9,7 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstScene/FirstScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/UnityTransportLayer.unity
+    path: Assets/Scenes/UnityTransportLayer/UnityTransportLayer.unity
     guid: 539e1aa3bbabeef459b96ba90247217c
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0

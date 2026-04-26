@@ -1,6 +1,6 @@
 {
-    "name": "FirstUnityURPProject",
-    "rootNamespace": "FirstUnityURPProject",
+    "name": "FirstUnityTransportProject",
+    "rootNamespace": "FirstUnityTransportProject",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
