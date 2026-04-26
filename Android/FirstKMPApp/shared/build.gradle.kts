@@ -56,9 +56,5 @@ kotlin {
         }
         commonMain.dependencies {
         }
-        all {
-            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
-        }
     }
 }
