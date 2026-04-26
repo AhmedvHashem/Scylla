@@ -1,21 +1,27 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.android.multiplatform.library)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    android {
+        namespace = "com.hashem.firstkmpapp.shared"
+        compileSdk = libs.versions.android.compile.get().toInt()
+        minSdk = libs.versions.android.min.get().toInt()
+
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget = JvmTarget.JVM_11
+        }
+
+        androidResources {
+            enable = true
         }
     }
-    
+
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -24,22 +30,35 @@ kotlin {
             isStatic = true
         }
     }
-    
-    sourceSets {
-        commonMain.dependencies {
-            // put your Multiplatform dependencies here
+
+    macosArm64 {
+        binaries.framework {
+            baseName = "Shared"
         }
     }
-}
 
-android {
-    namespace = "com.hashem.firstkmpapp.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    linuxX64 {
+        binaries.sharedLib {
+            baseName = "Shared"
+        }
     }
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
+
+    mingwX64 {
+        binaries.sharedLib {
+            baseName = "Shared"
+        }
+    }
+
+    sourceSets {
+        androidMain.dependencies {
+        }
+        iosMain.dependencies {
+        }
+        commonMain.dependencies {
+        }
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
     }
 }
