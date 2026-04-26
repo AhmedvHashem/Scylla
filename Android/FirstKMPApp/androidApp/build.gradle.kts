@@ -35,6 +35,7 @@ dependencies {
     implementation(projects.shared)
 
     implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.datetime)
     implementation(libs.kotlin.coroutines)
 
     implementation(libs.androidx.core.ktx)
