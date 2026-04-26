@@ -1,22 +1,16 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "com.hashem.androidnativelib"
-    compileSdk = 35
+    compileSdk = libs.versions.android.compile.get().toInt()
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.android.min.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        externalNativeBuild {
-            cmake {
-                cppFlags("")
-            }
-        }
     }
 
     buildTypes {

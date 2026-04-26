@@ -1,19 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
 
 android {
     namespace = "com.hashem.firstandroidapp"
-    compileSdk = 36
+    compileSdk = libs.versions.android.compile.get().toInt()
 
     defaultConfig {
         applicationId = "com.hashem.firstandroidapp"
-        minSdk = 26
-        targetSdk = 35
+        minSdk = libs.versions.android.min.get().toInt()
+        targetSdk = libs.versions.android.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -42,8 +41,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":mediaPickerManusLib"))
-
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlin.coroutines)
 
@@ -53,10 +50,11 @@ dependencies {
     // Android View
     implementation(libs.androidx.activity)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.exifinterface)
     implementation(libs.material)
 
     // Android Compose
-    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)

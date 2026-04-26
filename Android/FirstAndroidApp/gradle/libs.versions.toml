@@ -1,20 +1,25 @@
 [versions]
-agp = "9.1.0"
+agp = "9.2.0"
 ksp = "2.3.2"
-kotlin = "2.3.10"
-kotlinSerialization = "1.10.0"
+kotlin = "2.3.21"
+
+android-compile = "37"
+android-min = "30"
+android-target = "37"
+
+kotlinSerialization = "1.11.0"
 kotlinCoroutines = "1.10.2"
 
-coreKtx = "1.17.0"
+coreKtx = "1.18.0"
 lifecycleRuntimeKtx = "2.10.0"
 
-activity = "1.12.4"
+activity = "1.13.0"
+activityCompose = "1.13.0"
 appcompat = "1.7.1"
 material = "1.13.0"
 exifinterface = "1.4.2"
 
-activityCompose = "1.12.4"
-composeBom = "2026.02.00"
+composeBom = "2026.04.01"
 
 retrofit = "3.0.0"
 okhttp = "5.3.2"
@@ -26,8 +31,8 @@ rxandroid = "3.0.2"
 
 junit = "4.13.2"
 kotlinxCoroutinesTest = "1.10.2"
-mockitoCore = "5.21.0"
-mockitoKotlin = "6.2.3"
+mockitoCore = "5.23.0"
+mockitoKotlin = "6.3.0"
 
 truth = "1.4.5"
 
@@ -42,17 +47,17 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
 
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
@@ -82,6 +87,5 @@ testing-androidx-compose-junit4 = { group = "androidx.compose.ui", name = "ui-te
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

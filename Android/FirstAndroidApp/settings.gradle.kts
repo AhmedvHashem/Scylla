@@ -26,6 +26,3 @@ rootProject.name = "FirstAndroidApp"
 include(":androidApp")
 include(":androidLib")
 include(":androidNativeLib")
-include(":mediaPickerLib")
-include(":mediaPickerManusLib")
-include(":mediaPickerHashemLib")

@@ -12,9 +12,6 @@
             <option value="$PROJECT_DIR$/androidApp" />
             <option value="$PROJECT_DIR$/androidLib" />
             <option value="$PROJECT_DIR$/androidNativeLib" />
-            <option value="$PROJECT_DIR$/mediaPickerHashemLib" />
-            <option value="$PROJECT_DIR$/mediaPickerLib" />
-            <option value="$PROJECT_DIR$/mediaPickerManusLib" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -70,8 +70,6 @@ class MainComposeActivity : ComponentActivity() {
 
 @Composable
 fun MainUI() {
-
-
     var selectedImageUri by remember {
         mutableStateOf<Uri?>(null)
     }
@@ -96,8 +94,6 @@ fun MainUI() {
             )
             Button(
                 onClick = {
-
-
 //                    singlePhotoPickerLauncher.launch(
 //                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
 ////                        "*/*"
