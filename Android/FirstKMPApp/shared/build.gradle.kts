@@ -50,11 +50,17 @@ kotlin {
     }
 
     sourceSets {
+        commonMain.dependencies {
+        }
         androidMain.dependencies {
         }
         iosMain.dependencies {
         }
-        commonMain.dependencies {
+        macosArm64Main.dependencies {
+        }
+        linuxX64Main.dependencies {
+        }
+        mingwX64Main.dependencies {
         }
     }
 }
